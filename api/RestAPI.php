@@ -26,8 +26,8 @@ class RestAPI
         $this->method = $_SERVER["REQUEST_METHOD"];
 
         // Count the number of "parts" in the path
-        // Example: "api/apps" is 2 parts and
-        // "api/apps/5" is 3 parts
+        // Example: "api/Customers" is 2 parts and
+        // "api/Customers/5" is 3 parts
         $this->path_count = count($this->path_parts);
 
         $this->parseBody();
@@ -47,6 +47,16 @@ class RestAPI
     }
 
 
+    // Preset response for OK-response (200)
+    protected function ok(){
+        $this->sendJson("OK");
+    }
+
+    // Preset response for no content (204)
+    protected function noContent(){
+        $this->sendJson("", 204);
+    }
+
     // Preset response for if a resource is not found
     protected function notFound(){
         $this->sendJson("Not found", 404);
@@ -55,16 +65,6 @@ class RestAPI
     // Preset response for if a resource is created
     protected function created(){
         $this->sendJson("Created", 201);
-    }
-
-    // Preset response for if a resource is updated
-    protected function updated(){
-        $this->sendJson("Updated", 200);
-    }
-
-    // Preset response for if a resource is deleted
-    protected function deleted(){
-        $this->sendJson("Deleted", 200);
     }
 
     // Preset response for general server error

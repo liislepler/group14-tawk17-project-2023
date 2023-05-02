@@ -7,6 +7,7 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
 
 // Data access:
 // Class for connecting to database
+
 class Database
 {
     private $host = "localhost";
@@ -49,6 +50,8 @@ class Database
     {
         // Variables inside the query are OK when the variables are not user input.
         // Never use variables directly in queries when the variables value is user input.
+        // This includes data from the database that could come from a user
+        // Only use hard coded values OR white listed values directly in queries
         $query = "SELECT * FROM {$table_name} WHERE {$id_name} = ?";
 
         $stmt = $this->conn->prepare($query);
