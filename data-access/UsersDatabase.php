@@ -7,7 +7,7 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
 
 // Use "require_once" to load the files needed for the class
 require_once __DIR__ . "/Database.php";
-require_once __DIR__ . "/../models/UserModel.php";
+require_once __DIR__ . "/../models/UserModel";
 
 class UsersDatabase extends Database
 {
