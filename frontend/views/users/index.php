@@ -25,5 +25,3 @@ Template::header("Users");
     <?php endforeach; ?>
 
 </div>
-
-<?php Template::footer(); ?>

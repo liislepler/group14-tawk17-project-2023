@@ -16,5 +16,3 @@ Template::header("Edit " . $this->model->username);
 <form action="<?= $this->home ?>/users/<?= $this->model->user_id ?>/delete" method="post">
     <input type="submit" value="Delete" class="btn delete-btn">
 </form>
-
-<?php Template::footer(); ?>

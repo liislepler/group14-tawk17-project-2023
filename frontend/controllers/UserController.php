@@ -31,7 +31,7 @@ class UsersController extends ControllerBase
 
         // Path count is 3 meaning the current URL must be "/home/users/{SOMETHING}"
         // if {SOMETHING} id "new" we want to show the form for creating a user
-        else if ($this->path_count == 3 && $this->path_parts[2] == "new") {
+        else if ($this->path_count == 3 && $this->path_parts[2] == "create-account") {
             $this->showNewUserForm();
         }
 
@@ -102,7 +102,7 @@ class UsersController extends ControllerBase
     private function showNewUserForm()
     {
         // Shows the view file users/new.php
-        $this->viewPage("users/new");
+        $this->viewPage("create-account");
     }
 
 
