@@ -36,7 +36,9 @@ class FrontendRouter
             "users" => "UsersController",
             "assets" => "AssetsController",
             "create-account" => "AccountController",
-            "log-in" => "AccountController"
+            "add-children" => "AccountController",
+            "log-in" => "AccountController",
+            "feed" => "FeedController"
         ];
 
         $this->path_parts = $path_parts;

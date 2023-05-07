@@ -6,14 +6,11 @@ Template::header("Create Account");
 
 <h1>Create Account</h1>
 
-<form action="<?= $this->home ?>/create-account" method="post">
+<form action="<?= $this->home ?>/add-children" method="post">
     <input type="text" name="username" placeholder="Username"> <br>
     <input type="text" name="password" placeholder="Password"> <br>
-    <select name="role">
-        <option value="">Select...</option>
-        <option value="parent">Parent</option>
-        <option value="child">Child</option>
-    </select>
+    <input type="hidden" name="role" value="parent"> <br>
+    <p>If you're a child, let your parent sign-up before</p>
     <input type="submit" value="Sign Up" class="btn">
 </form>
 
