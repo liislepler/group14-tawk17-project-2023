@@ -20,6 +20,3 @@ Template::header($this->model->username);
     <b>Role: </b>
     <?= $this->model->role ?> 
 </p>
-
-
-<?php Template::footer(); ?>
