@@ -19,5 +19,5 @@ Template::header("Create Account");
 
 <div>
     <h3>Have an account?</h3>
-    <a href="<?= $home_path ?>/create-account/log-in">Log In</a>
+    <a href="<?= $this->home ?>/log-in">Log in</a>
 </div>

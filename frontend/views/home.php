@@ -20,8 +20,8 @@ Template::header("Home");
     The children and parents can make separate accounts but each parent is connected with their childs account. 
     </h2>
 
-    <a href="<?= $this->home ?>/create-account"><button>Create Account</button></a>
+    <a href="<?= $this->home ?>/create-account"><button>Create Account</button>
 
-    <button>Log in </button>
+    <a href="<?= $this->home ?>/log-in"><button>Log in</button></a>
 
 </div>

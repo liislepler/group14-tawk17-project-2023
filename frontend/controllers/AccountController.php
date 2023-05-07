@@ -23,6 +23,9 @@ class AccountController extends ControllerBase
         else if ($this->path_count == 2 && $this->path_parts[1] == "create-account") {
             $this->showNewUserForm();
         }
+        else if ($this->path_count == 2 && $this->path_parts[1] == "log-in") {
+            $this->showOldUserForm();
+        }
 
         // Show "404 not found" if the path is invalid
         else {
@@ -35,6 +38,13 @@ class AccountController extends ControllerBase
     {
         // Shows the view file users/new.php
         $this->viewPage("create-account");
+    }
+
+    // Gets one user and shows the in the edit user-view
+    private function showOldUserForm()
+    {
+        // Shows the view file users/new.php
+        $this->viewPage("log-in");
     }
 
     // handle all post requests for users in one place
