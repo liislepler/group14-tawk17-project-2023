@@ -6,7 +6,7 @@ Template::header("Create Account");
 
 <h1>Create Account</h1>
 
-<form action="<?= $this->home ?>/add-children" method="post">
+<form autocomplete="off" action="<?= $this->home ?>/create-account" method="post">
     <input type="text" name="username" placeholder="Username"> <br>
     <input type="text" name="password" placeholder="Password"> <br>
     <input type="hidden" name="role" value="parent"> <br>

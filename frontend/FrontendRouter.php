@@ -15,6 +15,7 @@ require_once __DIR__ . "/controllers/AssetsController.php";
 require_once __DIR__ . "/controllers/ArticleController.php";
 require_once __DIR__ . "/controllers/AccountController.php";
 require_once __DIR__ . "/controllers/AccountController.php";
+require_once __DIR__ . "/controllers/FeedController.php";
 
 // Class for routing all our API requests
 

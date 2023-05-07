@@ -29,9 +29,6 @@ class AccountController extends ControllerBase
         else if ($this->path_count == 3 && $this->path_parts[2] == "add-children") {
             $this->showChildUserForm();
         }
-        else if ($this->path_count == 3) {
-            $this->showChildUserForm();
-        }
 
         // Show "404 not found" if the path is invalid
         else {
@@ -39,24 +36,18 @@ class AccountController extends ControllerBase
         }
     }
 
-    // Gets one user and shows the in the edit user-view
     private function showNewUserForm()
     {
-        // Shows the view file users/new.php
         $this->viewPage("create-account");
     }
 
-    // Gets one user and shows the in the edit user-view
     private function showOldUserForm()
     {
-        // Shows the view file users/new.php
         $this->viewPage("log-in");
     }
 
-    // Gets one user and shows the in the edit user-view
     private function showChildUserForm()
     {
-        // Shows the view file users/new.php
         $this->viewPage("add-children");
     }
 
@@ -85,16 +76,22 @@ class AccountController extends ControllerBase
         $user->username = $this->body["username"];
         $user->password = $this->body["password"];
         $user->role = $this->body["role"];
+        $user->parent_id = $this->body["parentId"];
 
         // Save the user
         $success = UsersService::saveUser($user);
 
         // Redirect or show error based on response from business logic layer
         if ($success) {
-            $this->redirect($this->home);
+            if ($user->role = $this->body["role"] == "child") {
+                $this->redirect($this->home . "/feed");
+            } else {
+                $this->redirect($this->home . "/create-account/add-children");
+            }
         } else {
             $this->error();
         }
     }
+
 
 }
