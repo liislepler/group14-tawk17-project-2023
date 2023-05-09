@@ -5,7 +5,8 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
     die('This file cannot be accessed directly.');
 }
 
-require_once __DIR__ . "/UsersAPI.php";
+require_once __DIR__ . "/PurchasesAPI.php";
+require_once __DIR__ . "/AuthAPI.php";
 require_once __DIR__ . "/APIRoot.php";
 
 // Class for routing all our API requests
@@ -21,9 +22,10 @@ class APIRouter
         // Available routes
         // Add to this if you need to add any route to the API
         $this->routes = [
-            // Whenever someone calls "api/Customers" we 
-            // will load the CustomersAPI class
-            "users" => "UsersAPI",
+            // Whenever someone calls "api/feed" we 
+            // will load the FeedAPI class
+            "auth" => "AuthAPI",
+            "feed" => "FeedAPI",
             "root" => "APIRoot"
         ];
 
@@ -39,7 +41,7 @@ class APIRouter
 
         // URL/api OR URL/api/12334
         if (count($this->path_parts) >= 2 && $this->path_parts[1] != "") {
-            // Get the requested resource from the URL such as "Customers" or "Products"
+            // Get the requested resource from the URL such as "Purchases" or "Users"
             $resource = strtolower($this->path_parts[1]);
         }
 

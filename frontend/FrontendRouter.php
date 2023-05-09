@@ -9,11 +9,9 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
 require_once __DIR__ . "/functions.php";
 
 // Load controllers
-require_once __DIR__ . "/controllers/UserController.php";
+require_once __DIR__ . "/controllers/AuthController.php";
 require_once __DIR__ . "/controllers/HomeController.php";
 require_once __DIR__ . "/controllers/AssetsController.php";
-require_once __DIR__ . "/controllers/ArticleController.php";
-require_once __DIR__ . "/controllers/AccountController.php";
 require_once __DIR__ . "/controllers/AccountController.php";
 require_once __DIR__ . "/controllers/FeedController.php";
 
@@ -34,7 +32,7 @@ class FrontendRouter
             // Whenever someone calls "home/Users" we 
             // will load the CustomerPages class
             "home" => "HomeController",
-            "users" => "UsersController",
+            "auth" => "AuthController",
             "assets" => "AssetsController",
             "create-account" => "AccountController",
             "add-children" => "AccountController",

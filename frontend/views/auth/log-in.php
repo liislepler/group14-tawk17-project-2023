@@ -1,10 +1,4 @@
 <?php
-require_once __DIR__ . "/../Template.php";
-
-Template::header("Log In");
-?>
-
-<?php
 require_once __DIR__ . "/../../Template.php";
 
 Template::header("Login", $this->model["error"]);
