@@ -4,9 +4,10 @@ require_once __DIR__ . "/../models/UserModel";
 
 class Template
 {
-    public static function header($title) {
+    public static function header($title, $error = false) {
 
         $home_path = getHomePath();
+        $user = getUser();
         ?>
         <!DOCTYPE html>
         <html lang="en">
@@ -26,11 +27,21 @@ class Template
             <header>
                 <nav>
                     <a href="<?= $home_path ?>">Trackersaurus</a>
-                    <a href="<?= $home_path ?>/users">User</a>
+                    <?php if ($user) : ?>
+                        <a href="<?= $home_path ?>/auth/profile">Profile</a>
+                    <?php else : ?>
+                        <a href="<?= $home_path ?>/auth/login">Log in</a>
+                    <?php endif; ?>
                 </nav>
             </header>
 
             <main>
+
+            <?php if ($error) : ?>
+                <div class="error">
+                    <p><?= $error ?></p>
+                </div>
+            <?php endif; ?>
 
         <?php 
     }
