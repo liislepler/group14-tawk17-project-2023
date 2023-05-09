@@ -5,7 +5,7 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
     die('This file cannot be accessed directly.');
 }
 
-require_once __DIR__ . "/../ControllerBase.php";
+require_once __DIR__ . "/../ConrollerBase.php";
 require_once __DIR__ . "/../../business-logic/AuthService.php";
 
 // Class for handling requests to "home/Auth"
@@ -20,7 +20,6 @@ class AuthController extends ControllerBase
         if ($this->method == "POST") {
             $this->handlePost();
         }
-
 
 
         // GET: /home/auth/login
@@ -113,7 +112,7 @@ class AuthController extends ControllerBase
         $user = new UserModel();
 
         $user->username = $this->body["username"];
-        $user->user_role = "user"; // hard code all new users to regular "user" role
+        $user->user_role = $this->body["user_role"];
         $password = $this->body["password"];
         $confirm_password = $this->body["confirm_password"];
 

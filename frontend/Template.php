@@ -1,6 +1,6 @@
 <?php
 
-require_once __DIR__ . "/../models/UserModel";
+require_once __DIR__ . "/../models/UserModel.php";
 
 class Template
 {
@@ -30,7 +30,7 @@ class Template
                     <?php if ($user) : ?>
                         <a href="<?= $home_path ?>/auth/profile">Profile</a>
                     <?php else : ?>
-                        <a href="<?= $home_path ?>/auth/login">Log in</a>
+                        <a href="<?= $home_path ?>/auth/log-in">Log in</a>
                     <?php endif; ?>
                 </nav>
             </header>

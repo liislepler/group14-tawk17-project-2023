@@ -5,7 +5,6 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
     die('This file cannot be accessed directly.');
 }
 
-require_once __DIR__ . "/PurchasesAPI.php";
 require_once __DIR__ . "/AuthAPI.php";
 require_once __DIR__ . "/APIRoot.php";
 

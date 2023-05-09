@@ -1,5 +1,5 @@
 <?php
-require_once __DIR__ . "/../Template.php";
+require_once __DIR__ . "/../../Template.php";
 
 Template::header("Create Account", $this->model["error"]);
 ?>
@@ -10,7 +10,7 @@ Template::header("Create Account", $this->model["error"]);
     <input type="text" name="username" placeholder="Username"> <br>
     <input type="text" name="password" placeholder="Password"> <br>
     <input type="password" name="confirm_password" placeholder="Confirm password"> <br>
-    <input type="hidden" name="role" value="parent"> <br>
+    <input type="hidden" name="user_role" value="parent"> <br>
 
     <p>If you're a child, let your parent sign-up before</p>
     <input type="submit" value="Sign Up" class="btn">

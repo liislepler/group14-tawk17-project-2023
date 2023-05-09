@@ -34,9 +34,6 @@ class FrontendRouter
             "home" => "HomeController",
             "auth" => "AuthController",
             "assets" => "AssetsController",
-            "create-account" => "AccountController",
-            "add-children" => "AccountController",
-            "log-in" => "AccountController",
             "feed" => "FeedController"
         ];
 
