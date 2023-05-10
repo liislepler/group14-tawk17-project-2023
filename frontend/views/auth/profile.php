@@ -22,10 +22,9 @@ Template::header("Profile", $this->model["error"]);
                     <b><?= $user->username ?></b> <br>
                 </div>
                     <p>
-                        <b>User ID: </b>
-                        <?= $purchase->user_id ?>
+                        <b>Parent ID: </b>
+                        <?= $user->parent_id ?>
                     </p>
-                <a href="<?= $this->home ?>/purchases/<?= $purchase->purchase_id ?>/edit">Edit</a>
             </article>
 
         <?php endforeach; ?>
