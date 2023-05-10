@@ -33,7 +33,7 @@ class AuthController extends ControllerBase
 
         // GET: /home/auth/register
         if ($this->path_count == 3 && $this->path_parts[2] == "add-children") {
-            $this->showCreateAccountForm();
+            $this->showAddChildrenForm();
         }
         
 
@@ -60,6 +60,12 @@ class AuthController extends ControllerBase
     {
         // Shows the view file auth/create-account.php
         $this->viewPage("auth/create-account");
+    }
+
+    private function showAddChildrenForm()
+    {
+        // Shows the view file auth/add-children.php
+        $this->viewPage("auth/add-children");
     }
 
     private function showProfilePage()
@@ -144,43 +150,7 @@ class AuthController extends ControllerBase
             if ($user->user_role == "parent") {
                 $this->redirect($this->home . "/auth/add-children");
             } else {
-                $this->redirect($this->home . "/auth/profile");
-            }
-        } else {
-            $this->model["error"] == "Error creating an account";
-            $this->viewPage("auth/create-account");
-        }
-    }
-
-    private function registerChild()
-    {
-        $user = new UserModel();
-
-        $user->username = $this->body["username"];
-        $user->user_role = $this->body["user_role"];
-        $password = $this->body["password"];
-        $confirm_password = $this->body["confirm_password"];
-        $parent_id = $this->body["parent_id"];
-
-        if ($password !== $confirm_password) {
-            $this->model["error"] == "Passwords don't match";
-            $this->viewPage("auth/create-account");
-        }
-
-        $existing_user = UsersService::getUserByUsername($user->username);
-
-        if ($existing_user) {
-            $this->model["error"] == "Username already in use";
-            $this->viewPage("auth/create-account");
-        }
-
-        $success = AuthService::registerUser($user, $password);
-
-        if ($success) {
-            if ($user->user_role == "parent") {
-                $this->redirect($this->home . "/auth/add-children");
-            } else {
-                $this->redirect($this->home . "/auth/profile");
+                $this->redirect($this->home . "/auth/log-in");
             }
         } else {
             $this->model["error"] == "Error creating an account";
