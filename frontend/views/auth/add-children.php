@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . "/../../Template.php";
 
-Template::header("Add your children");
+Template::header("Add your children", $this->model["error"]);
 ?>
 
 <h1>Add your children</h1>

@@ -21,7 +21,6 @@ class AuthController extends ControllerBase
             $this->handlePost();
         }
 
-
         // GET: /home/auth/login
         if ($this->path_count == 3 && $this->path_parts[2] == "log-in") {
             $this->showLoginForm();
@@ -31,6 +30,12 @@ class AuthController extends ControllerBase
         if ($this->path_count == 3 && $this->path_parts[2] == "create-account") {
             $this->showCreateAccountForm();
         }
+
+        // GET: /home/auth/register
+        if ($this->path_count == 3 && $this->path_parts[2] == "add-children") {
+            $this->showCreateAccountForm();
+        }
+        
 
         // GET: /home/auth/profile
         if ($this->path_count == 3 && $this->path_parts[2] == "profile") {
@@ -74,6 +79,11 @@ class AuthController extends ControllerBase
 
         // POST: /home/auth/create-account
         else if ($this->path_count == 3 && $this->path_parts[2] == "create-account") {
+            $this->registerUser();
+        }
+
+        // POST: /home/auth/add-children
+        else if ($this->path_count == 3 && $this->path_parts[2] == "add-children") {
             $this->registerUser();
         }
 
@@ -131,7 +141,47 @@ class AuthController extends ControllerBase
         $success = AuthService::registerUser($user, $password);
 
         if ($success) {
-            $this->redirect($this->home . "/auth/log-in");
+            if ($user->user_role == "parent") {
+                $this->redirect($this->home . "/auth/add-children");
+            } else {
+                $this->redirect($this->home . "/auth/profile");
+            }
+        } else {
+            $this->model["error"] == "Error creating an account";
+            $this->viewPage("auth/create-account");
+        }
+    }
+
+    private function registerChild()
+    {
+        $user = new UserModel();
+
+        $user->username = $this->body["username"];
+        $user->user_role = $this->body["user_role"];
+        $password = $this->body["password"];
+        $confirm_password = $this->body["confirm_password"];
+        $parent_id = $this->body["parent_id"];
+
+        if ($password !== $confirm_password) {
+            $this->model["error"] == "Passwords don't match";
+            $this->viewPage("auth/create-account");
+        }
+
+        $existing_user = UsersService::getUserByUsername($user->username);
+
+        if ($existing_user) {
+            $this->model["error"] == "Username already in use";
+            $this->viewPage("auth/create-account");
+        }
+
+        $success = AuthService::registerUser($user, $password);
+
+        if ($success) {
+            if ($user->user_role == "parent") {
+                $this->redirect($this->home . "/auth/add-children");
+            } else {
+                $this->redirect($this->home . "/auth/profile");
+            }
         } else {
             $this->model["error"] == "Error creating an account";
             $this->viewPage("auth/create-account");

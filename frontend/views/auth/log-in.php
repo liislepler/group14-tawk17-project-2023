@@ -6,7 +6,7 @@ Template::header("Login", $this->model["error"]);
 
 <h1>Welcome back!</h1>
 
-<form action="<?= $this->home ?>/auth/log-in" method="post">
+<form autocomplete="off" action="<?= $this->home ?>/auth/log-in" method="post">
     <input type="text" name="username" placeholder="Username"> <br>
     <input type="password" name="password" placeholder="Password"> <br>
     <input type="submit" value="Log in" class="btn">
