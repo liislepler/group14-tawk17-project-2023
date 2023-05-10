@@ -146,13 +146,13 @@ class UsersDatabase extends Database
         return $success;
     }
 
-    public function getByParentId($parent_id)
+    public function getByParentId($user_id)
     {
-        $query = "SELECT * FROM users WHERE parent_id = user_id";
+        $query = "SELECT * FROM users WHERE parent_id = ?";
 
         $stmt = $this->conn->prepare($query);
 
-        $stmt->bind_param("i", $parent_id);
+        $stmt->bind_param("i", $user_id);
 
         $stmt->execute();
 
