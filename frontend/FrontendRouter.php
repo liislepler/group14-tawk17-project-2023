@@ -34,7 +34,7 @@ class FrontendRouter
             "home" => "HomeController",
             "auth" => "AuthController",
             "assets" => "AssetsController",
-            "feed" => "FeedController"
+            "welcome" => "feedController"
         ];
 
         $this->path_parts = $path_parts;
