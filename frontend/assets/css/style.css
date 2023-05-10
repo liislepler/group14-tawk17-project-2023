@@ -1,18 +1,35 @@
 .home-page,
 header {
     background-color: #FFE29C;
-    margin: 0;
+    margin: auto;
     padding: 0;
     width: 700px;
     align-content: center;
+    
 }
 
 h1 {
     padding: 40px;
-    margin: 0;
+    margin: auto;
     font-family: 'Coiny';
     font-size: 40px;
     text-align: center;
+}
+
+h2 {
+    padding-left: 40px;
+    padding-right: 40px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+
+}
+
+a {
+    margin: auto;
+    font-family: 'Coiny';
+    font-size: 20px;
+    text-align: center;
+    align-content: center;
 }
 
 button {
@@ -20,4 +37,8 @@ button {
     padding: 20px;
     margin: 20px;
     border-radius: 10px;
+    font-family: 'Coiny';
+    font-size: 20px;
+    text-align: center;
+    
 }
