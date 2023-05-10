@@ -14,7 +14,8 @@ Template::header("Add your children", $this->model["error"]);
     <input type="password" name="confirm_password" placeholder="Confirm password"> <br>
     <input type="hidden" name="user_role" value="child"> <br>
     
-    <input type="number" name="parent_id" placeholder="Parent id"> <br>
+    
+    <input type="number" name="parent_id" value="<?= $this->user->user_id ?>" placeholder="<?= $this->user->user_id ?>"> <br>
 
 
     <input type="submit" value="Continue" class="btn">

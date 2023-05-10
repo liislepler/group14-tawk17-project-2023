@@ -131,6 +131,7 @@ class AuthController extends ControllerBase
         $user->user_role = $this->body["user_role"];
         $password = $this->body["password"];
         $confirm_password = $this->body["confirm_password"];
+        $user->parent_id = $this->body["parent_id"];
 
         if ($password !== $confirm_password) {
             $this->model["error"] == "Passwords don't match";
@@ -148,10 +149,9 @@ class AuthController extends ControllerBase
 
         if ($success) {
             if ($user->user_role == "parent") {
-                $this->redirect($this->home . "/auth/add-children");
-            } else {
                 $this->redirect($this->home . "/auth/log-in");
-            }
+            } else 
+                $this->redirect($this->home . "/auth/profile");
         } else {
             $this->model["error"] == "Error creating an account";
             $this->viewPage("auth/create-account");

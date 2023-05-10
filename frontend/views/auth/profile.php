@@ -1,7 +1,7 @@
 <?php
 require_once __DIR__ . "/../../Template.php";
 
-Template::header("Profile");
+Template::header("Profile", $this->model["error"]);
 ?>
 
 <p>
@@ -10,6 +10,9 @@ Template::header("Profile");
 
 <?php if ($this->user->user_role === "parent") : ?>
     <p>Parent</p>
+    <div>
+        <a href="<?= $this->home ?>/auth/add-children">Add your children</a>
+    </div>
 <?php endif; ?>
 
 
