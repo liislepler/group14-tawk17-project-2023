@@ -29,6 +29,9 @@ $user = getUser();
         <h2>
         The child can see their recorded activities in the calendar which they can update and delete at any time. 
         The admin/parent can track their children's activities to get a better insight into their activities, chores, hobbies, moods, habits, etc. in real-time.
+        </h2>
+
+        <h2>
         The children and parents can make separate accounts but each parent is connected with their childs account. 
         </h2>
 

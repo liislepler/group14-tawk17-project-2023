@@ -1,12 +1,19 @@
 .home-page,
 header {
-    background-color: #FFE29C;
+    background-color: #FFD974;
     margin: auto;
     padding: 0;
     width: 700px;
-    align-content: center;
-    
 }
+
+nav {
+    padding: 20px;
+    margin: auto;
+    align-content: center;
+    background-color: #FFB320;
+}
+
+
 
 h1 {
     padding: 40px;
@@ -29,14 +36,15 @@ a {
     font-family: 'Coiny';
     font-size: 20px;
     text-align: center;
-    align-content: center;
 }
 
+
 button {
-    background-color: #84C1A0;
+    background-color: #ACCC5F;
     padding: 20px;
     margin: 20px;
     border-radius: 10px;
+    border: none;
     font-family: 'Coiny';
     font-size: 20px;
     text-align: center;
