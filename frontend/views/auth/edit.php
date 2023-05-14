@@ -13,6 +13,6 @@ Template::header("Edit your account");
     <input type="submit" value="Save" class="btn">
 </form>
 
-<form action="<?= $this->home ?>/user/<?= $this->user->user_id ?>/delete" method="post">
+<form action="<?= $this->home ?>/auth/profile/<?= $user_id ?>/delete" method="post">
     <input type="submit" value="Delete" class="btn delete-btn">
 </form>

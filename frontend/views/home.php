@@ -7,8 +7,34 @@ $user = getUser();
 ?>
 
 <?php if ($user) : ?>
+<?php
+$parent_id = $this->user->user_id;
+$usersService = new UsersService();
+$children = $usersService->getChildrenForAdmin($parent_id); 
+?>
+
 <?php if ($this->user->user_role === "parent") : ?>
     <h1>Parent view</h1>
+
+    <?php if (count($children) > 0) : ?>
+            <ul>
+                <?php foreach ($children as $child) : ?>
+                    <li>
+                        <h3><?php echo $child->username; ?></h3>
+                        <div class="done">
+                            <h3>Done</h3>
+                        </div>
+                        <div class="to-do">
+                            <h3>Done</h3>
+                            <button><a href="<?= $this->home ?>/parent-tasks/<?= $child->user_id ?>/new-task">New task</a></button>
+                        </div>
+                        <h3>To-do</h3>
+                    </li>
+                <?php endforeach; ?>
+            </ul>
+    <?php else : ?>
+        <p>No children found for the parent</p>
+    <?php endif; ?>
 <?php endif; ?>
 
 <?php if ($this->user->user_role === "child") : ?>

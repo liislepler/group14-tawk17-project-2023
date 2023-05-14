@@ -33,7 +33,7 @@ Template::header("Profile", $this->model["error"]);
                 <?php endforeach; ?>
             </ul>
         <?php else : ?>
-            <p>No normal users found for the admin.</p>
+            <p>No children found for the parent</p>
         <?php endif; ?>
 
     </div>

@@ -54,4 +54,13 @@ class UsersService
 
         return $children;
     }
+
+    public static function deleteUserById($user_id)
+    {
+        $users_database = new UsersDatabase();
+
+        $success = $users_database->deleteById($user_id);
+
+        return $success;
+    }
 }

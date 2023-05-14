@@ -80,12 +80,6 @@ class AuthController extends ControllerBase
 
     private function showEditForm()
     {
-        // Get the user with the ID from the URL
-        //$user = $this->getUser();
-
-        // $this->user is used for sending data to the view
-        //$this->user = $user;
-
         // Shows the view file auth/edit.php
         $this->viewPage("auth/edit");
     }
@@ -114,8 +108,14 @@ class AuthController extends ControllerBase
             $this->logoutUser();
         }
 
+        // POST: /home/auth/profile/{id}/edit
         else if ($this->path_count == 5 && $this->path_parts[4] == "edit") {
             $this->updateUser();
+        }
+
+        // POST: /home/auth/profile/{id}/delete
+        else if ($this->path_count == 5 && $this->path_parts[4] == "delete") {
+            $this->deleteUser();
         }
 
         // Show "404 not found" if the path is invalid
@@ -199,13 +199,31 @@ class AuthController extends ControllerBase
 
         // Get updated properties from the body
         $user->username = $this->body["username"];
-        $user->password = $this->body["password"];
+        //$user->password = $this->body["password"];
 
         $success = UsersService::updateUser($id, $user);
 
         // Redirect or show error based on response from business logic layer
         if ($success) {
             $this->redirect($this->home . "/auth/profile");
+        } else {
+            $this->error();
+        }
+    }
+
+    private function deleteUser()
+    {
+
+        // Get ID from the URL
+        $id = $this->path_parts[3];
+
+        // Delete the user
+        $success = UsersService::deleteUserById($id);
+
+        // Redirect or show error based on response from business logic layer
+        if ($success) {
+            session_destroy();
+            $this->redirect($this->home);
         } else {
             $this->error();
         }
