@@ -25,10 +25,9 @@ $children = $usersService->getChildrenForAdmin($parent_id);
                             <h3>Done</h3>
                         </div>
                         <div class="to-do">
-                            <h3>Done</h3>
+                            <h3>To-do</h3>
                             <button><a href="<?= $this->home ?>/parent-tasks/<?= $child->user_id ?>/new-task">New task</a></button>
                         </div>
-                        <h3>To-do</h3>
                     </li>
                 <?php endforeach; ?>
             </ul>
