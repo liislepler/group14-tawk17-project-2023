@@ -1,4 +1,5 @@
 .home-page,
+
 header {
     background-color: #FFD974;
     margin: auto;
@@ -13,8 +14,6 @@ nav {
     background-color: #FFB320;
 }
 
-
-
 h1 {
     padding: 40px;
     margin: auto;
@@ -28,7 +27,6 @@ h2 {
     padding-right: 40px;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
-
 }
 
 a {
@@ -37,7 +35,6 @@ a {
     font-size: 20px;
     text-align: center;
 }
-
 
 button {
     background-color: #ACCC5F;
