@@ -146,8 +146,7 @@ class UsersDatabase extends Database
         return $success;
     }
 
-    public function getByParentId($user_id)
-    {
+    public function getChildrenByAdminId($user_id) {
         $query = "SELECT * FROM users WHERE parent_id = ?";
 
         $stmt = $this->conn->prepare($query);

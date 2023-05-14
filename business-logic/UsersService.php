@@ -46,4 +46,12 @@ class UsersService
         return $success;
     }
 
+    public static function getChildrenForAdmin($user_id) 
+    {
+        $users_database = new UsersDatabase();
+
+        $children = $users_database->getChildrenByAdminId($user_id);
+
+        return $children;
+    }
 }

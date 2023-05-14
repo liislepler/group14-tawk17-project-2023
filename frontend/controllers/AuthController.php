@@ -36,10 +36,14 @@ class AuthController extends ControllerBase
             $this->showAddChildrenForm();
         }
         
-
         // GET: /home/auth/profile
         if ($this->path_count == 3 && $this->path_parts[2] == "profile") {
             $this->showProfilePage();
+        }
+
+        // GET: /home/auth/profile/{id}/edit
+        if ($this->path_count == 5 && $this->path_parts[4] == "edit") {
+            $this->showEditForm();
         }
 
         // Show "404 not found" if the path is invalid
@@ -74,6 +78,18 @@ class AuthController extends ControllerBase
         $this->viewPage("auth/profile");
     }
 
+    private function showEditForm()
+    {
+        // Get the user with the ID from the URL
+        //$user = $this->getUser();
+
+        // $this->user is used for sending data to the view
+        //$this->user = $user;
+
+        // Shows the view file auth/edit.php
+        $this->viewPage("auth/edit");
+    }
+
 
     // handle all post requests in one place
     private function handlePost()
@@ -96,6 +112,10 @@ class AuthController extends ControllerBase
         // POST: /home/auth/log-out
         else if ($this->path_count == 3 && $this->path_parts[2] == "log-out") {
             $this->logoutUser();
+        }
+
+        else if ($this->path_count == 5 && $this->path_parts[4] == "edit") {
+            $this->updateUser();
         }
 
         // Show "404 not found" if the path is invalid
@@ -163,8 +183,32 @@ class AuthController extends ControllerBase
     {
         session_destroy();
 
-        $this->redirect($this->home . "/auth/log-in");
+        $this->redirect($this->home);
     }
 
+    // Update a purchase with data from the URL and body
+    private function updateUser()
+    {
+
+        $user = new UserModel();
+
+        // Get ID from the URL
+        $id = $this->path_parts[3];
+
+        //$existing_user = UsersService::getUserById($id);
+
+        // Get updated properties from the body
+        $user->username = $this->body["username"];
+        $user->password = $this->body["password"];
+
+        $success = UsersService::updateUser($id, $user);
+
+        // Redirect or show error based on response from business logic layer
+        if ($success) {
+            $this->redirect($this->home . "/auth/profile");
+        } else {
+            $this->error();
+        }
+    }
 
 }
