@@ -66,7 +66,7 @@ class TasksController extends ControllerBase
         
         $selectedFoodOptions = $this->body["food"];
         $task->food = implode(", ", $selectedFoodOptions);
-        
+
         $task->child = $this->body["child"];
         $task->status = "0";
 
@@ -79,4 +79,5 @@ class TasksController extends ControllerBase
             $this->viewPage("parent-tasks/new-task");
         }
     }
+
 }

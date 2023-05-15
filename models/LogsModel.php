@@ -9,6 +9,7 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
 
 class LogsModel{
     public $log_id;
+    public $child;
     public $emotion;
     public $social;  
     public $hobby;  

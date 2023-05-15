@@ -26,6 +26,22 @@ $children = $usersService->getChildrenForAdmin($parent_id);
                         </div>
                         <div class="to-do">
                             <h3>To-do</h3>
+                            <?php
+                            $TasksService = new TasksService();
+                            $tasks = $TasksService->getTasksForChild($child->user_id); 
+                            ?>
+                            
+                            <?php foreach ($tasks as $task) : ?>
+                                
+                                <?php if ($task->child ==  $child->user_id) : ?>
+                                    <div>
+                                        School: <?= $task->school ?><br>
+                                        Chore: <?= $task->chore ?><br>
+                                        Food: <?= $task->food ?><br>
+                                        Status: <?= $task->status ?><br>
+                                    </div>
+                                <?php endif; ?>
+                            <?php endforeach; ?>
                             <button><a href="<?= $this->home ?>/parent-tasks/<?= $child->user_id ?>/new-task">New task</a></button>
                         </div>
                     </li>
