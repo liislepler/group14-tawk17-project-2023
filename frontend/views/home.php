@@ -41,6 +41,8 @@ $children = $usersService->getChildrenForAdmin($parent_id);
 <?php endif; ?>
 
 <?php else : ?>
+
+<div>
     <div class="home-page">
 
     <h1>Welcome to Trackersaurus</h1>
@@ -60,8 +62,14 @@ $children = $usersService->getChildrenForAdmin($parent_id);
         The children and parents can make separate accounts but each parent is connected with their childs account. 
         </h2>
 
-        <a href="<?= $this->home ?>/auth/create-account"><button>Create Account</button></a>
-        <a href="<?= $this->home ?>/auth/log-in"><button>Log in</button></a>
 
+        <div class="center">
+                <a href="<?= $this->home ?>/auth/create-account"><button>Create Account</button></a>
+                <a href="<?= $this->home ?>/auth/log-in"><button>Log in</button></a>
+
+        </div>
+       
     </div>
+</div>
+
 <?php endif; ?>

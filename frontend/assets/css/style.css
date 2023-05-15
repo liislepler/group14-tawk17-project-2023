@@ -1,21 +1,21 @@
 .home-page,
+.create-acount, 
+
 
 header {
-    background-color: #FFD974;
+    color: black;
     margin: auto;
-    padding: 0;
-    width: 700px;
 }
 
 nav {
     padding: 20px;
-    margin: auto;
-    align-content: center;
     background-color: #FFB320;
+    text-align: center;
+
 }
 
 h1 {
-    padding: 40px;
+    padding: 30px;
     margin: auto;
     font-family: 'Coiny';
     font-size: 40px;
@@ -25,6 +25,30 @@ h1 {
 h2 {
     padding-left: 40px;
     padding-right: 40px;
+    padding-bottom: 20px;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+    margin: auto;
+    width: 50%;
+}
+
+h3 {
+    padding-left: 40px;
+    padding-right: 40px;
+    padding-bottom: 20px;
+    font-family: 'Coiny';
+    font-size: 30px;
+    margin: auto;
+}
+
+h4 {
+    padding-top: 10px;
+    font-family: 'Coiny';
+    font-size: 20px;
+    margin: auto;
+}
+
+p {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
 }
@@ -34,16 +58,50 @@ a {
     font-family: 'Coiny';
     font-size: 20px;
     text-align: center;
+    color: black;
+    text-decoration: none;
+    padding: 10px;
+}
+
+.center {
+    display: center;
+    justify-content: center;
+    align-items: center;
 }
 
 button {
     background-color: #ACCC5F;
     padding: 20px;
-    margin: 20px;
+    margin: 10px;
     border-radius: 10px;
     border: none;
     font-family: 'Coiny';
     font-size: 20px;
-    text-align: center;
-    
 }
+
+button:hover { 
+    background-color: #7da520;
+  }
+
+input {
+    font-family: 'Roboto', sans-serif;
+    font-size: 15px;
+    padding: 10px;
+}
+
+input.btn {
+    background-color: #ACCC5F;
+    border: none;
+    font-family: 'Coiny';
+    font-size: 20px;
+}
+
+div {
+    border-radius: 5px;
+    background-color: #ffe6a1;
+    padding: 20px;
+    margin: auto;
+    text-align: center;
+  }
+
+  
