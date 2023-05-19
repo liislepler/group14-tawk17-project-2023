@@ -13,11 +13,10 @@ Template::header("Login", $this->model["error"]);
     <input type="text" name="username" placeholder="Username"> <br>
     <h4>Password</h4>
     <input type="password" name="password" placeholder="Password"> <br>
-<button>
-    <input type="submit" value="Log in" class="btn">
-</button>
-</form>
 
+<button type="submit" class="btn">Log in</button>
+
+</form>
 
     <h3>Don't have an account?</h3>
     <a href="<?= $this->home ?>/auth/create-account"><button>Create account</button></a>

@@ -1,35 +1,37 @@
 .home-page,
-.create-acount, 
+.create-acount,
+.log-in, 
+.profile, 
+.add-children,
+.edit,
 
 
 header {
-    color: black;
+    color: rgb(32, 32, 32);
     margin: auto;
 }
 
 nav {
     padding: 20px;
-    background-color: #FFB320;
     text-align: center;
-
 }
 
 h1 {
-    padding: 30px;
+    padding-top: 30px;
+    padding-bottom: 30px;
     margin: auto;
     font-family: 'Coiny';
     font-size: 40px;
     text-align: center;
+    color: rgb(32, 32, 32);
 }
 
 h2 {
-    padding-left: 40px;
-    padding-right: 40px;
     padding-bottom: 20px;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
     margin: auto;
-    width: 50%;
+    color: rgb(32, 32, 32);
 }
 
 h3 {
@@ -39,6 +41,7 @@ h3 {
     font-family: 'Coiny';
     font-size: 30px;
     margin: auto;
+    color: rgb(32, 32, 32);
 }
 
 h4 {
@@ -46,11 +49,13 @@ h4 {
     font-family: 'Coiny';
     font-size: 20px;
     margin: auto;
+    color: rgb(32, 32, 32);
 }
 
 p {
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
+    color: rgb(32, 32, 32);
 }
 
 a {
@@ -58,7 +63,7 @@ a {
     font-family: 'Coiny';
     font-size: 20px;
     text-align: center;
-    color: black;
+    color: #7da520;
     text-decoration: none;
     padding: 10px;
 }
@@ -71,22 +76,28 @@ a {
 
 button {
     background-color: #ACCC5F;
+    color: rgb(32, 32, 32);
     padding: 20px;
     margin: 10px;
-    border-radius: 10px;
+    border-radius: 20px;
     border: none;
     font-family: 'Coiny';
     font-size: 20px;
 }
 
-button:hover { 
+button:hover {
     background-color: #7da520;
-  }
+}
 
 input {
     font-family: 'Roboto', sans-serif;
     font-size: 15px;
-    padding: 10px;
+    width: 50%;
+    padding: 15px 20px;
+    margin: 10px 0;
+    box-sizing: border-box;
+    border: none;
+    border-radius: 20px;
 }
 
 input.btn {
@@ -97,11 +108,22 @@ input.btn {
 }
 
 div {
-    border-radius: 5px;
+    border-radius: 30px;
     background-color: #ffe6a1;
     padding: 20px;
     margin: auto;
     text-align: center;
+    width: 60%;
+}
+
+li{
+    list-style-type: none;
+}
+
+ul {
+    text-align: center;
+    list-style: inside;
+    margin: 0;
+    padding: 0;
   }
 
-  
