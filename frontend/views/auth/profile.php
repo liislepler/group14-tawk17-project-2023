@@ -13,10 +13,10 @@ Template::header("Profile", $this->model["error"]);
 
 <div class="account-settings">
     <a href="<?= $this->home ?>/auth/profile/<?= $user_id ?>/edit">Account settings</a>
-    <h3>Logged in as: <?php $this->user->user_id ?></h3>
+    <h3>Logged in as: <?= $this->user->username ?></h3>
 
     <?php if ($this->user->user_role === "parent") : ?>
-        <h1>Parent account</h1>
+        <h4>Parent account</h4>
 
         <h3>Children:</h3>
 

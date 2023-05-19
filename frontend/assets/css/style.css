@@ -1,11 +1,9 @@
 .home-page,
 .create-acount,
-.log-in, 
-.profile, 
+.log-in,
+.profile,
 .add-children,
 .edit,
-
-
 header {
     color: rgb(32, 32, 32);
     margin: auto;
@@ -116,8 +114,9 @@ div {
     width: 60%;
 }
 
-li{
+li {
     list-style-type: none;
+    margin-bottom: 20px;
 }
 
 ul {
@@ -125,5 +124,15 @@ ul {
     list-style: inside;
     margin: 0;
     padding: 0;
-  }
+}
 
+.to-do-list {
+    display: flex;
+    width: 100%;
+    padding: 0;
+}
+
+.one-child {
+    background-color: #ffe6a1;
+    margin-bottom: 50px;
+}

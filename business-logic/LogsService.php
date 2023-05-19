@@ -26,4 +26,29 @@ class LogsService {
 
         return $logs;
     }
+
+    public static function getLogById($id){
+        $logs_database = new LogsDatabase();
+
+        $log = $logs_database->getOne($id);
+
+        return $log;
+    }
+
+    public static function updateLogById($log_id, LogsModel $log){
+        $log_database = new LogsDatabase();
+
+        $success = $log_database->updateById($log_id, $log);
+
+        return $success;
+    }
+
+    public static function deleteLogById($log_id)
+    {
+        $logs_database = new LogsDatabase();
+
+        $success = $logs_database->deleteById($log_id);
+
+        return $success;
+    }
 }

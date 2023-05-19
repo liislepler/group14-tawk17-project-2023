@@ -3,14 +3,6 @@ require_once __DIR__ . "/../../Template.php";
 require_once __DIR__ . "/../../../business-logic/UsersService.php";
 
 Template::header("New Log");
-
-/*url = $_SERVER['REQUEST_URI'];
-$parts = explode('/', $url);
-$child_id = $parts[4];
-
-$usersService = new UsersService();
-$user = $UsersService->getUserById($child_id);
-*/
 ?>
 
 <h1>Add a new log for today</h1>

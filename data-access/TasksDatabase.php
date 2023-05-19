@@ -71,4 +71,16 @@ class TasksDatabase extends Database
             return $task;
         }
 
+        public function updateById($task_id, TasksModel $task)
+        {
+            $query = "UPDATE parenttasks SET status=? WHERE task_id=?;";
+    
+            $stmt = $this->conn->prepare($query);
+    
+            $stmt->bind_param("ii", $task->status, $task_id);
+    
+            $success = $stmt->execute();
+    
+            return $success;
+        }
 }

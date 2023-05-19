@@ -61,4 +61,33 @@ class LogsDatabase extends Database
         return $logs;
     }
 
+    public function getOne($log_id)
+    {
+        $result = $this->getOneRowByIdFromTable($this->table_name, $this->id_name, $log_id);
+
+        $log = $result->fetch_object("LogsModel");
+
+        return $log;
+    }
+
+    public function updateById($log_id, LogsModel $log)
+    {
+        $query = "UPDATE logs SET emotion = ?, social = ?, hobby = ?, school = ?, chore = ?, food = ? WHERE log_id = ?";
+
+        $stmt = $this->conn->prepare($query);
+    
+        $stmt->bind_param("ssssssi", $log->emotion, $log->social, $log->hobby, $log->school, $log->chore, $log->food, $log_id);
+
+        $success = $stmt->execute();
+
+        return $success;
+    }
+
+    public function deleteById($log_id)
+    {
+        $success = $this->deleteOneRowByIdFromTable($this->table_name, $this->id_name, $log_id);
+
+        return $success;
+    }
+
 }

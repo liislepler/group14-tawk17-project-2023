@@ -26,6 +26,16 @@ class LogsController extends ControllerBase
             $this->showNewLogForm();
         }
 
+        // GET: /home/child-log/{log id}/edit
+        if ($this->path_count == 4 && $this->path_parts[3] == "edit") {
+            $this->showEditForm();
+        }
+
+        // POST: /home/child-log/{log id}/delete
+        else if ($this->path_count == 4 && $this->path_parts[3] == "delete") {
+            $this->deleteLog();
+        }
+
         // Show "404 not found" if the path is invalid
         else {
             $this->notFound();
@@ -39,6 +49,13 @@ class LogsController extends ControllerBase
         $this->viewPage("child-logs/new-log");
     }
 
+    private function showEditForm()
+    {
+        // Shows the view file child-logs/id/edit.php
+        $this->viewPage("child-logs/edit");
+    }
+
+
 
     // handle all post requests in one place
     private function handlePost()
@@ -46,6 +63,11 @@ class LogsController extends ControllerBase
         // POST: /home/child-logs/{child id}/new-log
         if ($this->path_count == 4 && $this->path_parts[3] == "new-log") {
             $this->newLog();
+        }
+
+        // POST: /home/child-logs/{id}/edit
+        if ($this->path_count == 4 && $this->path_parts[3] == "edit") {
+            $this->editLog();
         }
 
         // Show "404 not found" if the path is invalid
@@ -85,6 +107,57 @@ class LogsController extends ControllerBase
         } else {
             $this->model["error"] == "Error adding a log";
             $this->viewPage("child-logs/new-log");
+        }
+    }
+
+    private function editLog()
+    {
+        $log = new LogsModel();
+
+        // Get ID from the URL
+        $id = $this->path_parts[2];
+
+        $selectedEmotionOptions = isset($this->body["emotion"]) ? $this->body["emotion"] : [];
+        $log->emotion = !empty($selectedEmotionOptions) ? implode(", ", $selectedEmotionOptions) : '';
+        
+        $selectedSocialOptions = isset($this->body["social"]) ? $this->body["social"] : [];
+        $log->social = !empty($selectedSocialOptions) ? implode(", ", $selectedSocialOptions) : '';
+        
+        $selectedHobbyOptions = isset($this->body["hobby"]) ? $this->body["hobby"] : [];
+        $log->hobby = !empty($selectedHobbyOptions) ? implode(", ", $selectedHobbyOptions) : '';
+        
+        $selectedSchoolOptions = isset($this->body["school"]) ? $this->body["school"] : [];
+        $log->school = !empty($selectedSchoolOptions) ? implode(", ", $selectedSchoolOptions) : '';
+        
+        $selectedChoreOptions = isset($this->body["chore"]) ? $this->body["chore"] : [];
+        $log->chore = !empty($selectedChoreOptions) ? implode(", ", $selectedChoreOptions) : '';
+        
+        $selectedFoodOptions = isset($this->body["food"]) ? $this->body["food"] : [];
+        $log->food = !empty($selectedFoodOptions) ? implode(", ", $selectedFoodOptions) : '';
+
+        $success = LogsService::updateLogById($id, $log);
+
+        // Redirect or show error based on response from business logic layer
+        if ($success) {
+            $this->redirect($this->home);
+        } else {
+            $this->error();
+        }
+    }
+
+    private function deleteLog()
+    {
+
+        // Get ID from the URL
+        $id = $this->path_parts[2];
+
+        $success = LogsService::deleteLogById($id);
+
+        // Redirect or show error based on response from business logic layer
+        if ($success) {
+            $this->redirect($this->home);
+        } else {
+            $this->error();
         }
     }
 

@@ -19,24 +19,30 @@ if ($task) {
     $choreOptions = ['Clean the room', 'Wash dishes', 'Take out the trash', 'Do laundry', 'Mow the lawn'];
     $foodOptions = ['Breakfast', 'Lunch', 'Dinner', 'Snacks', 'Dessert'];
     ?>
-    <form action="<?= $this->home ?>/parent-tasks/<?= $task_id ?>/complete" method="post">
-    <label>Status:</label>
-    <input type="checkbox" name="status" value="1" <?= $task->status == 1 ? 'checked' : '' ?>> Completed
     
-    <label>School:</label>
-    <div><?= is_array($task->school) ? implode(', ', $task->school) : $task->school ?></div>
+    <form action="<?= $this->home ?>/parent-tasks/<?= $task_id ?>/complete" method="post">
+        <label>Check if completed:</label>
+        <input type="checkbox" name="status" value="1" <?= $task->status == 1 ? 'checked' : '' ?>> <br>
 
-    <label>Chore:</label>
-    <div><?= is_array($task->chore) ? implode(', ', $task->chore) : $task->chore ?></div>
+        <?php if (!empty($task->school)) : ?>
+            <label>School:</label>
+            <div><?= is_array($task->school) ? implode(', ', $task->school) : $task->school ?></div>
+        <?php endif; ?>
 
-    <label>Food:</label>
-    <div><?= is_array($task->food) ? implode(', ', $task->food) : $task->food ?></div>
+        <?php if (!empty($task->chore)) : ?>
+            <label>Chore:</label>
+            <div><?= is_array($task->chore) ? implode(', ', $task->chore) : $task->chore ?></div>
+        <?php endif; ?>
+
+        <?php if (!empty($task->food)) : ?>
+            <label>Food:</label>
+            <div><?= is_array($task->food) ? implode(', ', $task->food) : $task->food ?></div>
+        <?php endif; ?>
 
         <input type="hidden" name="task_id" value="<?= $task->task_id ?>"> <br>
-
         <input type="submit" value="Save" class="btn">
     </form>
-    <?php
+<?php
 } else {
     // Display an error message or handle the case where the task doesn't exist
     echo 'Task not found.';

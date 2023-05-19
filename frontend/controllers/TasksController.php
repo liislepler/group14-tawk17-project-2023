@@ -98,7 +98,21 @@ class TasksController extends ControllerBase
 
     private function completeTask()
     {
-        
+        $task = new TasksModel();
+
+        // Get ID from the URL
+        $id = $this->path_parts[2];
+
+        $task->status = $this->body["status"];
+
+        $success = TasksService::updateTaskById($id, $task);
+
+        // Redirect or show error based on response from business logic layer
+        if ($success) {
+            $this->redirect($this->home);
+        } else {
+            $this->error();
+        }
     }
 
 }
