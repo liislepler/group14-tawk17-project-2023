@@ -26,6 +26,11 @@ class TasksController extends ControllerBase
             $this->showNewTaskForm();
         }
 
+        // GET: /home/parent-tasks/{task id}/complete
+        if ($this->path_count == 4 && $this->path_parts[3] == "complete") {
+            $this->showCompleteForm();
+        }
+
         // Show "404 not found" if the path is invalid
         else {
             $this->notFound();
@@ -39,6 +44,12 @@ class TasksController extends ControllerBase
         $this->viewPage("parent-tasks/new-task");
     }
 
+    private function showCompleteForm()
+    {
+        // Shows the view file parent-tasks/edit.php
+        $this->viewPage("parent-tasks/edit");
+    }
+
 
     // handle all post requests in one place
     private function handlePost()
@@ -46,6 +57,11 @@ class TasksController extends ControllerBase
         // POST: /home/parent-tasks/{child id}/new-task
         if ($this->path_count == 4 && $this->path_parts[3] == "new-task") {
             $this->newTask();
+        }
+
+        // GET: /home/parent-tasks/{task id}/complete
+        if ($this->path_count == 4 && $this->path_parts[3] == "complete") {
+            $this->completeTask();
         }
 
         // Show "404 not found" if the path is invalid
@@ -58,14 +74,14 @@ class TasksController extends ControllerBase
     {
         $task = new TasksModel();
 
-        $selectedSchoolOptions = $this->body["school"];
-        $task->school = implode(", ", $selectedSchoolOptions);
+        $selectedSchoolOptions = isset($this->body["school"]) ? $this->body["school"] : [];
+        $task->school = !empty($selectedSchoolOptions) ? implode(", ", $selectedSchoolOptions) : '';
         
-        $selectedChoreOptions = $this->body["chore"];
-        $task->chore = implode(", ", $selectedChoreOptions);
+        $selectedChoreOptions = isset($this->body["chore"]) ? $this->body["chore"] : [];
+        $task->chore = !empty($selectedChoreOptions) ? implode(", ", $selectedChoreOptions) : '';
         
-        $selectedFoodOptions = $this->body["food"];
-        $task->food = implode(", ", $selectedFoodOptions);
+        $selectedFoodOptions = isset($this->body["food"]) ? $this->body["food"] : [];
+        $task->food = !empty($selectedFoodOptions) ? implode(", ", $selectedFoodOptions) : '';
 
         $task->child = $this->body["child"];
         $task->status = "0";
@@ -78,6 +94,11 @@ class TasksController extends ControllerBase
             $this->model["error"] == "Error adding a task";
             $this->viewPage("parent-tasks/new-task");
         }
+    }
+
+    private function completeTask()
+    {
+        
     }
 
 }

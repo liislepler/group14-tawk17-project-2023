@@ -61,4 +61,14 @@ class TasksDatabase extends Database
         return $tasks;
     }
 
+        // Get one task by using the inherited function getOneRowByIdFromTable
+        public function getOne($task_id)
+        {
+            $result = $this->getOneRowByIdFromTable($this->table_name, $this->id_name, $task_id);
+    
+            $task = $result->fetch_object("TasksModel");
+    
+            return $task;
+        }
+
 }

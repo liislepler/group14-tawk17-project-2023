@@ -26,4 +26,12 @@ class TasksService {
 
         return $tasks;
     }
+
+    public static function getTaskById($id){
+        $tasks_database = new TasksDatabase();
+
+        $task = $tasks_database->getOne($id);
+
+        return $task;
+    }
 }
