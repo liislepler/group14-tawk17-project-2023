@@ -27,7 +27,9 @@ Template::header("Profile", $this->model["error"]);
                     <?php foreach ($children as $child) : ?>
                         <li>
                             <h4><?php echo $child->username; ?></h4>
-                            <button>Delete</button>
+                            <form action="<?= $this->home ?>/auth/profile/<?= $child->user_id ?>/delete" method="post" onsubmit="return confirmDelete()">
+                                <input type="submit" value="Delete" class="btn delete-btn">
+                            </form>
                         </li>
                     <?php endforeach; ?>
                 </ul>
@@ -53,4 +55,5 @@ Template::header("Profile", $this->model["error"]);
         return confirm("Are you sure you want to delete this child?");
     }
 </script>
+
 

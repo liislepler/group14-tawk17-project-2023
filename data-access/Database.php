@@ -13,7 +13,7 @@ class Database
     // Connection info is set in config.php
     private $host = "localhost";
     private $user = "root";
-    private $pass = "root";
+    private $pass = "";
     private $db = "tracker_db";
 
     protected $conn;
