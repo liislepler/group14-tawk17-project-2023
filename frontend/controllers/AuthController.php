@@ -220,10 +220,16 @@ class AuthController extends ControllerBase
         // Delete the user
         $success = UsersService::deleteUserById($id);
 
+        $user = UsersService::getUserById($id);
+
         // Redirect or show error based on response from business logic layer
         if ($success) {
-            session_destroy();
-            $this->redirect($this->home);
+            if ($user && $user->user_role == "child") {
+                session_destroy();
+                $this->redirect($this->home);
+            } else {
+                $this->redirect($this->home . "/auth/profile");
+            }
         } else {
             $this->error();
         }
