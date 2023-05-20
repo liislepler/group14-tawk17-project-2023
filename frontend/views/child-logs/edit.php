@@ -84,9 +84,10 @@ if ($log) {
 
         <input type="submit" value="Save" class="btn">
 
-        <form action="<?= $this->home ?>/child-logs/<?= $log_id ?>/delete" method="post">
-            <input type="submit" value="Delete" class="btn delete-btn">
-        </form>
+    </form>
+
+    <form action="<?= $this->home ?>/child-logs/<?= $log_id ?>/delete" method="post" onsubmit="return confirmDelete()">
+        <input type="submit" value="Delete" class="btn delete-btn">
     </form>
 <?php
 } else {
@@ -94,3 +95,9 @@ if ($log) {
     echo 'Logs not found.';
 }
 ?>
+
+<script>
+    function confirmDelete() {
+        return confirm('Are you sure you want to delete this log?');
+    }
+</script>

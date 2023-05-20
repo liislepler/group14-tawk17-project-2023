@@ -21,14 +21,19 @@ class TasksController extends ControllerBase
             $this->handlePost();
         }
 
-        // GET: /home/{child id}/new-task
+        // /home/{child id}/new-task
         if ($this->path_count == 4 && $this->path_parts[3] == "new-task") {
             $this->showNewTaskForm();
         }
 
-        // GET: /home/parent-tasks/{task id}/complete
+        // /home/parent-tasks/{task id}/complete
         if ($this->path_count == 4 && $this->path_parts[3] == "complete") {
             $this->showCompleteForm();
+        }
+
+        // /home/parent-tasks/{task id}/edit
+        if ($this->path_count == 4 && $this->path_parts[3] == "edit") {
+            $this->showEditForm();
         }
 
         // Show "404 not found" if the path is invalid
@@ -46,6 +51,12 @@ class TasksController extends ControllerBase
 
     private function showCompleteForm()
     {
+        // Shows the view file parent-tasks/complete.php
+        $this->viewPage("parent-tasks/complete");
+    }
+
+    private function showEditForm()
+    {
         // Shows the view file parent-tasks/edit.php
         $this->viewPage("parent-tasks/edit");
     }
@@ -54,14 +65,24 @@ class TasksController extends ControllerBase
     // handle all post requests in one place
     private function handlePost()
     {
-        // POST: /home/parent-tasks/{child id}/new-task
+        // /home/parent-tasks/{child id}/new-task
         if ($this->path_count == 4 && $this->path_parts[3] == "new-task") {
             $this->newTask();
         }
 
-        // GET: /home/parent-tasks/{task id}/complete
+        // /home/parent-tasks/{task id}/complete
         if ($this->path_count == 4 && $this->path_parts[3] == "complete") {
             $this->completeTask();
+        }
+
+        // /home/parent-tasks/{task id}/edit
+        if ($this->path_count == 4 && $this->path_parts[3] == "edit") {
+            $this->editTask();
+        }
+
+        // /home/parent-tasks/{task id}/delete
+        if ($this->path_count == 4 && $this->path_parts[3] == "delete") {
+            $this->deleteTask();
         }
 
         // Show "404 not found" if the path is invalid
@@ -105,7 +126,48 @@ class TasksController extends ControllerBase
 
         $task->status = $this->body["status"];
 
+        $success = TasksService::completeTaskById($id, $task);
+
+        // Redirect or show error based on response from business logic layer
+        if ($success) {
+            $this->redirect($this->home);
+        } else {
+            $this->error();
+        }
+    }
+
+    private function editTask()
+    {
+        $task = new TasksModel();
+
+        // Get ID from the URL
+        $id = $this->path_parts[2];
+
+        $selectedSchoolOptions = isset($this->body["school"]) ? $this->body["school"] : [];
+        $task->school = !empty($selectedSchoolOptions) ? implode(", ", $selectedSchoolOptions) : '';
+        
+        $selectedChoreOptions = isset($this->body["chore"]) ? $this->body["chore"] : [];
+        $task->chore = !empty($selectedChoreOptions) ? implode(", ", $selectedChoreOptions) : '';
+        
+        $selectedFoodOptions = isset($this->body["food"]) ? $this->body["food"] : [];
+        $task->food = !empty($selectedFoodOptions) ? implode(", ", $selectedFoodOptions) : '';
+
         $success = TasksService::updateTaskById($id, $task);
+
+        // Redirect or show error based on response from business logic layer
+        if ($success) {
+            $this->redirect($this->home);
+        } else {
+            $this->error();
+        }
+    }
+
+    private function deleteTask()
+    {
+        // Get ID from the URL
+        $id = $this->path_parts[2];
+
+        $success = TasksService::deleteTaskById($id);
 
         // Redirect or show error based on response from business logic layer
         if ($success) {

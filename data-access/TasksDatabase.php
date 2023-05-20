@@ -61,26 +61,46 @@ class TasksDatabase extends Database
         return $tasks;
     }
 
-        // Get one task by using the inherited function getOneRowByIdFromTable
-        public function getOne($task_id)
-        {
-            $result = $this->getOneRowByIdFromTable($this->table_name, $this->id_name, $task_id);
-    
-            $task = $result->fetch_object("TasksModel");
-    
-            return $task;
-        }
+    // Get one task by using the inherited function getOneRowByIdFromTable
+    public function getOne($task_id)
+    {
+        $result = $this->getOneRowByIdFromTable($this->table_name, $this->id_name, $task_id);
 
-        public function updateById($task_id, TasksModel $task)
-        {
-            $query = "UPDATE parenttasks SET status=? WHERE task_id=?;";
+        $task = $result->fetch_object("TasksModel");
+
+        return $task;
+    }
+
+    public function completeById($task_id, TasksModel $task)
+    {
+        $query = "UPDATE parenttasks SET status=? WHERE task_id=?;";
+
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bind_param("ii", $task->status, $task_id);
+
+        $success = $stmt->execute();
+
+        return $success;
+    }
+
+    public function updateById($task_id, TasksModel $task)
+    {
+        $query = "UPDATE parenttasks SET school = ?, chore = ?, food = ? WHERE task_id = ?";
+
+        $stmt = $this->conn->prepare($query);
     
-            $stmt = $this->conn->prepare($query);
-    
-            $stmt->bind_param("ii", $task->status, $task_id);
-    
-            $success = $stmt->execute();
-    
-            return $success;
-        }
+        $stmt->bind_param("sssi", $task->school, $task->chore, $task->food, $task_id);
+
+        $success = $stmt->execute();
+
+        return $success;
+    }
+
+    public function deleteById($task_id)
+    {
+        $success = $this->deleteOneRowByIdFromTable($this->table_name, $this->id_name, $task_id);
+
+        return $success;
+    }
 }

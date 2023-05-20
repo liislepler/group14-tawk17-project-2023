@@ -88,34 +88,39 @@ class AuthController extends ControllerBase
     // handle all post requests in one place
     private function handlePost()
     {
-        // POST: /home/auth/log-in
+        // /home/auth/log-in
         if ($this->path_count == 3 && $this->path_parts[2] == "log-in") {
             $this->loginUser();
         }
 
-        // POST: /home/auth/create-account
-        else if ($this->path_count == 3 && $this->path_parts[2] == "create-account") {
+        // /home/auth/create-account
+        if ($this->path_count == 3 && $this->path_parts[2] == "create-account") {
             $this->registerUser();
         }
 
-        // POST: /home/auth/add-children
-        else if ($this->path_count == 3 && $this->path_parts[2] == "add-children") {
+        // /home/auth/add-children
+        if ($this->path_count == 3 && $this->path_parts[2] == "add-children") {
             $this->registerUser();
         }
 
-        // POST: /home/auth/log-out
-        else if ($this->path_count == 3 && $this->path_parts[2] == "log-out") {
+        // /home/auth/log-out
+        if ($this->path_count == 3 && $this->path_parts[2] == "log-out") {
             $this->logoutUser();
         }
 
-        // POST: /home/auth/profile/{id}/edit
-        else if ($this->path_count == 5 && $this->path_parts[4] == "edit") {
+        // /home/auth/profile/{id}/edit
+        if ($this->path_count == 5 && $this->path_parts[4] == "edit") {
             $this->updateUser();
         }
 
-        // POST: /home/auth/profile/{id}/delete
-        else if ($this->path_count == 5 && $this->path_parts[4] == "delete") {
+        // /home/auth/profile/{id}/delete
+        if ($this->path_count == 5 && $this->path_parts[4] == "delete") {
             $this->deleteUser();
+        }
+
+        // /home/auth/profile/{id}/delete
+        if ($this->path_count == 5 && $this->path_parts[4] == "delete-child") {
+            $this->deleteChild();
         }
 
         // Show "404 not found" if the path is invalid
@@ -211,13 +216,12 @@ class AuthController extends ControllerBase
         }
     }
 
-    private function deleteUser()
+    private function deleteChild()
     {
-
         // Get ID from the URL
         $id = $this->path_parts[3];
 
-        // Delete the user
+        // Delete the child
         $success = UsersService::deleteUserById($id);
 
         $user = UsersService::getUserById($id);
@@ -230,6 +234,29 @@ class AuthController extends ControllerBase
             } else {
                 $this->redirect($this->home . "/auth/profile");
             }
+        } else {
+            $this->error();
+        }
+    }
+
+    private function deleteUser()
+    {
+        // Get ID from the URL
+        $id = $this->path_parts[3];
+
+        // Delete the parent
+        $success = UsersService::deleteUserById($id);
+
+        // Redirect or show error based on response from business logic layer
+        if ($success) {
+            // Instantiate UsersService
+            $userService = new UsersService();
+
+            // Delete the children of the parent
+            $userService->deleteChildrenByParentId($id);
+
+            session_destroy();
+            $this->redirect($this->home);
         } else {
             $this->error();
         }

@@ -21,19 +21,14 @@ class LogsController extends ControllerBase
             $this->handlePost();
         }
 
-        // GET: /home/{child id}/new-task
+        // /home/{child id}/new-task
         if ($this->path_count == 4 && $this->path_parts[3] == "new-log") {
             $this->showNewLogForm();
         }
 
-        // GET: /home/child-log/{log id}/edit
+        // /home/child-log/{log id}/edit
         if ($this->path_count == 4 && $this->path_parts[3] == "edit") {
             $this->showEditForm();
-        }
-
-        // POST: /home/child-log/{log id}/delete
-        else if ($this->path_count == 4 && $this->path_parts[3] == "delete") {
-            $this->deleteLog();
         }
 
         // Show "404 not found" if the path is invalid
@@ -60,14 +55,19 @@ class LogsController extends ControllerBase
     // handle all post requests in one place
     private function handlePost()
     {
-        // POST: /home/child-logs/{child id}/new-log
+        // /home/child-logs/{child id}/new-log
         if ($this->path_count == 4 && $this->path_parts[3] == "new-log") {
             $this->newLog();
         }
 
-        // POST: /home/child-logs/{id}/edit
+        // /home/child-logs/{id}/edit
         if ($this->path_count == 4 && $this->path_parts[3] == "edit") {
             $this->editLog();
+        }
+
+        // /home/child-logs/{log id}/delete
+        if ($this->path_count == 4 && $this->path_parts[3] == "delete") {
+            $this->deleteLog();
         }
 
         // Show "404 not found" if the path is invalid
@@ -147,7 +147,6 @@ class LogsController extends ControllerBase
 
     private function deleteLog()
     {
-
         // Get ID from the URL
         $id = $this->path_parts[2];
 

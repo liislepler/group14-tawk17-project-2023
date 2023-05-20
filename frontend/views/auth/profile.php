@@ -5,7 +5,7 @@ require_once __DIR__ . "/../../../business-logic/UsersService.php";
 $parent_id = $this->user->user_id;
 $user_id = $this->user->user_id;
 $usersService = new UsersService();
-$children = $usersService->getChildrenForAdmin($parent_id);
+$children = $usersService->getChildrenForParent($parent_id);
 
 Template::header("Profile", $this->model["error"]);
 ?>
@@ -27,7 +27,7 @@ Template::header("Profile", $this->model["error"]);
                     <?php foreach ($children as $child) : ?>
                         <li>
                             <h4><?php echo $child->username; ?></h4>
-                            <form action="<?= $this->home ?>/auth/profile/<?= $child->user_id ?>/delete" method="post" onsubmit="return confirmDelete()">
+                            <form action="<?= $this->home ?>/auth/profile/<?= $child->user_id ?>/delete-child" method="post" onsubmit="return confirmDelete()">
                                 <input type="submit" value="Delete" class="btn delete-btn">
                             </form>
                         </li>

@@ -10,7 +10,7 @@ $user = getUser();
     <?php
     $parent_id = $this->user->user_id;
     $usersService = new UsersService();
-    $children = $usersService->getChildrenForAdmin($parent_id);
+    $children = $usersService->getChildrenForParent($parent_id);
     ?>
 
 
@@ -89,6 +89,7 @@ $user = getUser();
                                             <?php if (!empty($task->food)) : ?>
                                                 Food: <?= $task->food ?><br>
                                             <?php endif; ?>
+                                            <a href="<?= $this->home ?>/parent-tasks/<?= $task->task_id ?>/edit">Edit</a>
                                         </div>
                                     <?php endif; ?>
                                 <?php endforeach; ?>
@@ -206,7 +207,7 @@ $user = getUser();
 
             <h2>
                 The child can see their recorded activities in the calendar which they can update and delete at any time.
-                The admin/parent can track their children's activities to get a better insight into their activities, chores, hobbies, moods, habits, etc. in real-time.
+                The parent can track their children's activities to get a better insight into their activities, chores, hobbies, moods, habits, etc. in real-time.
             </h2>
 
             <h2>

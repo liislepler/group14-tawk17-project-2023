@@ -46,11 +46,11 @@ class UsersService
         return $success;
     }
 
-    public static function getChildrenForAdmin($user_id) 
+    public static function getChildrenForParent($user_id) 
     {
         $users_database = new UsersDatabase();
 
-        $children = $users_database->getChildrenByAdminId($user_id);
+        $children = $users_database->getChildrenByParentId($user_id);
 
         return $children;
     }
@@ -60,6 +60,21 @@ class UsersService
         $users_database = new UsersDatabase();
 
         $success = $users_database->deleteById($user_id);
+
+        return $success;
+    }
+
+    public function deleteChildrenByParentId($user_id)
+    {
+        $users_database = new UsersDatabase();
+
+        // Get the children of the parent user
+        $children = $users_database->getChildrenByParentId($user_id);
+
+        // Delete each child user
+        foreach ($children as $child) {
+            $success = $users_database->deleteById($child->user_id);
+        }
 
         return $success;
     }

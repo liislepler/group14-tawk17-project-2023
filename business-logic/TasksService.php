@@ -35,10 +35,27 @@ class TasksService {
         return $task;
     }
 
+    public static function completeTaskById($task_id, TasksModel $task){
+        $task_database = new TasksDatabase();
+
+        $success = $task_database->completeById($task_id, $task);
+
+        return $success;
+    }
+
     public static function updateTaskById($task_id, TasksModel $task){
         $task_database = new TasksDatabase();
 
         $success = $task_database->updateById($task_id, $task);
+
+        return $success;
+    }
+
+    public static function deleteTaskById($task_id)
+    {
+        $tasks_database = new TasksDatabase();
+
+        $success = $tasks_database->deleteById($task_id);
 
         return $success;
     }
