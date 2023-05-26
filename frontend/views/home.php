@@ -13,6 +13,12 @@ $user = getUser();
     $children = $usersService->getChildrenForParent($parent_id);
     ?>
 
+<<<<<<< Updated upstream
+=======
+    <div class="container">
+        <?php if ($this->user->user_role === "parent") : ?>
+            <h1>Parent view</h1>
+>>>>>>> Stashed changes
 
 <?php if ($this->user->user_role === "parent") : ?>
     <div class="parent-view">
@@ -102,8 +108,12 @@ $user = getUser();
         <?php else : ?>
             <p>No children found for the parent</p>
         <?php endif; ?>
+<<<<<<< Updated upstream
     </div>
 <?php endif; ?>
+=======
+
+>>>>>>> Stashed changes
 
 
 
@@ -222,6 +232,7 @@ $user = getUser();
             </div>
 
         </div>
+    </div>
     </div>
 
 <?php endif; ?>

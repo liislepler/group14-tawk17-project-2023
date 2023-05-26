@@ -16,7 +16,11 @@ Template::header("Profile", $this->model["error"]);
     <h3>Logged in as: <?= $this->user->username ?></h3>
 
     <?php if ($this->user->user_role === "parent") : ?>
+<<<<<<< Updated upstream
         <h4>Parent account</h4>
+=======
+        <h1>Parent account</h1>
+>>>>>>> Stashed changes
 
         <h3>Children:</h3>
 
@@ -39,9 +43,18 @@ Template::header("Profile", $this->model["error"]);
 
         </div>
 
+<<<<<<< Updated upstream
 
         <div class="item-grid">
             <a href="<?= $this->home ?>/auth/add-children" class="btn">Add your children</a>
+=======
+        <div class="item-grid">
+            <a href="<?= $this->home ?>/auth/add-children" class="btn">Add your children</a>
+        </div>
+
+        <div class="item-grid" >
+            <a href="<?= $this->home ?>/auth/profile/<?= $user_id ?>/edit" class="btn"> Account settings</a>
+>>>>>>> Stashed changes
         </div>
 
         <div class="item-grid" >
@@ -60,5 +73,3 @@ Template::header("Profile", $this->model["error"]);
         return confirm("Are you sure you want to delete this child?");
     }
 </script>
-
-
