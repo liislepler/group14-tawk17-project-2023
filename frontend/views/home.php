@@ -14,9 +14,11 @@ $user = getUser();
     ?>
 
 
+
+
 <?php if ($this->user->user_role === "parent") : ?>
     <div class="parent-view">
-        <h1>Parent view!!!! <?= $this->user->user_role ?> </h1>
+        <h1>Parent view <?= $this->user->user_role ?> </h1>
 
         <?php if (count($children) > 0) : ?>
             <?php foreach ($children as $child) : ?>
@@ -104,6 +106,7 @@ $user = getUser();
         <?php endif; ?>
     </div>
 <?php endif; ?>
+
 
 
 
