@@ -16,11 +16,11 @@ class TasksDatabase extends Database
 
     public function insert(TasksModel $task)
     {
-        $query = "INSERT INTO parenttasks (school, chore, food, child, status) VALUES (?, ?, ?, ?, ?)";
+        $query = "INSERT INTO parenttasks (school, chore, food, child, status, parent) VALUES (?, ?, ?, ?, ?, ?)";
 
         $stmt = $this->conn->prepare($query);
 
-        $stmt->bind_param("sssii", $task->school, $task->chore, $task->food, $task->child, $task->status);
+        $stmt->bind_param("sssiii", $task->school, $task->chore, $task->food, $task->child, $task->status, $task->parent);
 
         $success = $stmt->execute();
 
@@ -69,6 +69,27 @@ class TasksDatabase extends Database
         $task = $result->fetch_object("TasksModel");
 
         return $task;
+    }
+
+    public function getByParentId($parent)
+    {
+        $query = "SELECT * FROM parenttasks WHERE parent = ?";
+
+        $stmt = $this->conn->prepare($query);
+
+        $stmt->bind_param("i", $parent);
+
+        $stmt->execute();
+
+        $result = $stmt->get_result();
+
+        $tasks = [];
+
+        while ($task = $result->fetch_object("TasksModel")) {
+            $tasks[] = $task;
+        }
+
+        return $tasks;
     }
 
     public function completeById($task_id, TasksModel $task)
