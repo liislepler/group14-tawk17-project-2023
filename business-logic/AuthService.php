@@ -87,8 +87,8 @@ class AuthService
             "username" => $user->username,
             "user_role" => $user->user_role,
             "parent_id" => $user->parent_id,
-            "iss" => APPLICATION_NAME,
-            "aud" => APPLICATION_NAME,
+            "iss" => "Trackersaurus",
+            "aud" => "Trackersaurus",
             "exp" => time() + 3600, // set to expire in 1 hour
             "iat" => time(),
             "nbf" => time()
@@ -101,7 +101,7 @@ class AuthService
         $encoded_payload = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($payload));
 
         // Create the JWT signature using the HMAC-SHA256 algorithm and a secret key
-        $signature = hash_hmac("sha256", "$encoded_header.$encoded_payload", JWT_SECRET, true);
+        $signature = hash_hmac("sha256", "$encoded_header.$encoded_payload", 'bbfa5004bc1edabf0b89e3a15d07742584be8d1762dd91f27d5515c06', true);
 
         // Encode Signature to Base64Url String
         $encoded_signature = str_replace(['+', '/', '='], ['-', '_', ''], base64_encode($signature));
@@ -129,7 +129,7 @@ class AuthService
         }
 
         // Calculate the expected signature using the HMAC-SHA256 algorithm and the secret key
-        $expected_signature = base64_encode(hash_hmac("sha256", "$encoded_header.$encoded_payload", JWT_SECRET, true));
+        $expected_signature = base64_encode(hash_hmac("sha256", "$encoded_header.$encoded_payload", 'bbfa5004bc1edabf0b89e3a15d07742584be8d1762dd91f27d5515c06', true));
         
         // Encode Signature to Base64Url String
         $expected_signature = str_replace(['+', '/', '='], ['-', '_', ''], $expected_signature);

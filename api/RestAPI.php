@@ -110,7 +110,7 @@ class RestAPI
 
         $payload = AuthService::validateToken($token);
 
-        if($payload === false || $payload->iss !== APPLICATION_NAME){
+        if($payload === false || $payload->iss !== "Trackersaurus"){
             return false;
         }
 

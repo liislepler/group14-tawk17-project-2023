@@ -21,7 +21,7 @@ class AuthAPI extends RestAPI
             $this->getUser();
         }
 
-        // POST: /api/auth/register
+        // POST: /api/auth/create-account
         if ($this->method == "POST" && $this->path_count == 3 && $this->path_parts[2] == "create-account") {
             $this->registerUser();
         }
@@ -51,7 +51,7 @@ class AuthAPI extends RestAPI
         $user = new UserModel();
 
         $user->username = $this->body["username"];
-        $user->user_role = "user"; 
+        $user->user_role = $this->body["user_role"];
         $password = $this->body["password"];
 
         $success = AuthService::registerUser($user, $password);
