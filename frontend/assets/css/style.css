@@ -35,7 +35,6 @@ h2 {
 h3 {
     padding-left: 40px;
     padding-right: 40px;
-    padding-bottom: 20px;
     font-family: 'Coiny';
     font-size: 30px;
     margin: auto;
@@ -66,6 +65,17 @@ a {
     padding: 10px;
 }
 
+a.btn {
+    background-color: #ACCC5F;
+    color: rgb(32, 32, 32);
+    padding: 15px;
+    margin: 10px;
+    border-radius: 15px;
+    border: none;
+    font-family: 'Coiny';
+    font-size: 20px;
+}
+
 .center {
     display: center;
     justify-content: center;
@@ -75,7 +85,7 @@ a {
 button {
     background-color: #ACCC5F;
     color: rgb(32, 32, 32);
-    padding: 20px;
+    padding: 15px;
     margin: 10px;
     border-radius: 20px;
     border: none;
@@ -95,7 +105,7 @@ input {
     margin: 10px 0;
     box-sizing: border-box;
     border: none;
-    border-radius: 20px;
+    border-radius: 15px;
 }
 
 input.btn {
@@ -105,10 +115,23 @@ input.btn {
     font-size: 20px;
 }
 
+input.btn.delete-btn{
+    background-color: #cc5f5f;
+    color: rgb(32, 32, 32);
+    padding: 5px;
+    margin: 5px;
+    border-radius: 10px;
+    border: none;
+    font-family: 'Coiny';
+    font-size: 15px;
+    width: 20%;
+}
+
+
 div {
     border-radius: 30px;
     background-color: #ffe6a1;
-    padding: 20px;
+    padding: 15px;
     margin: auto;
     text-align: center;
     width: 60%;

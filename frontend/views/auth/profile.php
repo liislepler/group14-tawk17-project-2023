@@ -12,7 +12,7 @@ Template::header("Profile", $this->model["error"]);
 
 
 <div class="account-settings">
-    <a href="<?= $this->home ?>/auth/profile/<?= $user_id ?>/edit">Account settings</a>
+   
     <h3>Logged in as: <?= $this->user->username ?></h3>
 
     <?php if ($this->user->user_role === "parent") : ?>
@@ -38,14 +38,19 @@ Template::header("Profile", $this->model["error"]);
             <?php endif; ?>
 
         </div>
-        <div>
-            <a href="<?= $this->home ?>/auth/add-children">Add your children</a>
+
+
+        <div class="item-grid">
+            <a href="<?= $this->home ?>/auth/add-children" class="btn">Add your children</a>
         </div>
 
+        <div class="item-grid" >
+            <a href="<?= $this->home ?>/auth/profile/<?= $user_id ?>/edit" class="btn"> Account settings</a>
+        </div>
     <?php endif; ?>
 
     <form action="<?= $this->home ?>/auth/log-out" method="post">
-        <input type="submit" value="Log out" class="btn delete-btn">
+        <input type="submit" value="Log out" class="btn">
     </form>
 
 </div>

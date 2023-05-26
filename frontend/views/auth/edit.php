@@ -5,7 +5,7 @@ $user_id = $this->user->user_id;
 Template::header("Edit your account");
 ?>
 
-<div>
+<div class="container">
 
     <h1>Edit your account</h1>
 

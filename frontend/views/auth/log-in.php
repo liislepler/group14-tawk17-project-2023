@@ -4,7 +4,7 @@ require_once __DIR__ . "/../../Template.php";
 Template::header("Login", $this->model["error"]);
 ?>
 
-<div>
+<div class="container">
 
 <h1>Welcome back!</h1>
 

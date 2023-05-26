@@ -4,7 +4,7 @@ require_once __DIR__ . "/../../Template.php";
 Template::header("Create Account", $this->model["error"]);
 ?>
 
-<div>
+<div class="container">
 
 <h1>Create Account</h1>
 
