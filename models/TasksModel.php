@@ -14,4 +14,5 @@ class tasksModel{
     public $food;  
     public $child; 
     public $status; 
+    public $parent;
 }

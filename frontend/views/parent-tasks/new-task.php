@@ -44,6 +44,7 @@ $user = $usersService->getUserById($child_id);
     Status: <input type="number" name="status" placeholder="To-do" readonly style="border: none;"> <br>
 
     <input type="hidden" name="child" value="<?= $user->user_id ?>"> <br>
+    <input type="hidden" name="parent" value="<?= $this->user->user_id ?>"> <br>
 
     <input type="submit" value="Save" class="btn">
 </form>

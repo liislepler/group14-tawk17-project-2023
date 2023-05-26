@@ -18,6 +18,14 @@ class TasksService {
         return $success;
     }
 
+    public static function getTasksByParent($parent){
+        $tasks_database = new TasksDatabase();
+
+        $tasks = $tasks_database->getByParentId($parent);
+
+        return $tasks;
+    }
+
     public static function getTasksForChild($child) 
     {
         $tasks_database = new TasksDatabase();

@@ -105,6 +105,7 @@ class TasksController extends ControllerBase
         $task->food = !empty($selectedFoodOptions) ? implode(", ", $selectedFoodOptions) : '';
 
         $task->child = $this->body["child"];
+        $task->parent = $this->body["parent"];
         $task->status = "0";
 
         $success = TasksService::addTask($task);
