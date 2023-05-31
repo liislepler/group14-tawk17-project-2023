@@ -21,7 +21,7 @@ Template::header("Profile", $this->model["error"]);
         <div class="item-grid">
 
             <h3>Children:</h3>
-            <div class="children-list">
+            <div class="to-do">
             <?php if (count($children) > 0) : ?>
                 <ul>
                     <?php foreach ($children as $child) : ?>
@@ -31,11 +31,10 @@ Template::header("Profile", $this->model["error"]);
                             <form action="<?= $this->home ?>/auth/profile/<?= $child->user_id ?>/delete-child" method="post" onsubmit="return confirmDelete()">
                                 <input type="submit" value="Delete" class="btn delete-btn">
                             </form> 
-                        </div>
-                        </li>
+                        </li></div>
+                        <div class="to-do">
                     <?php endforeach; ?>
-                </ul>
-            </div>
+                </ul></div>
             <?php else : ?>
                 <p>No children found for the parent</p>
             <?php endif; ?>
@@ -44,17 +43,15 @@ Template::header("Profile", $this->model["error"]);
                 <a href="<?= $this->home ?>/auth/add-children" class="btn">Add your children</a>
             </div>
 
-        <?php endif; ?>
-
-        <div class="account-settings">
             <div class="button">
                 <a href="<?= $this->home ?>/auth/profile/<?= $user_id ?>/edit" class="btn"> Account settings</a>
             </div>
 
-            <form action="<?= $this->home ?>/auth/log-out" method="post">
-                <input class="logout" type="submit" value="Log out" class="btn">
-            </form>
-        </div>
+        <?php endif; ?>
+
+        <form action="<?= $this->home ?>/auth/log-out" method="post">
+            <input type="submit" value="Log out" class="btn">
+        </form>
 
 
         </div>
