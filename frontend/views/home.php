@@ -21,7 +21,14 @@ $user = getUser();
 
     <?php if ($this->user->user_role === "parent") : ?>
         <div class="parent-view">
-            <h1>Parent view for <?= $this->user->user_role ?> </h1>
+            <h4>
+                <?php 
+                $currentDateTime = date('d.m.y');
+                $currentDayOfWeek = date('l');
+                echo "Today is " . $currentDayOfWeek . " " . $currentDateTime;
+                ?> 
+            </h4>
+            <h1><?= $this->user->username ?>'s view </h1>
 
             <?php if (count($children) > 0) : ?>
                 <?php foreach ($children as $child) : ?>
@@ -120,16 +127,20 @@ $user = getUser();
 
     <?php if ($this->user->user_role === "child") : ?>
         <div class="child-view">
-            <h1>Child view</h1>
-
-<div class="to-do-list-child">
-    
+        <h4>
+            <?php 
+            $currentDateTime = date('d.m.y');
+            $currentDayOfWeek = date('l');
+            echo "Today is " . $currentDayOfWeek . " " . $currentDateTime;
+            ?> 
+        </h4>
+        <h1><?= $this->user->username ?>'s view </h1>
+            <div class="to-do-list-child">
                 <?php
                 $TasksService = new TasksService();
                 $tasks = $TasksService->getTasksForChild($this->user->user_id);
                 ?>
-
-<div>
+                <div>
                     <h3>To-do</h3>
                     <?php foreach ($tasks as $task) : ?>
                         <?php if ($task->status == "0") : ?>

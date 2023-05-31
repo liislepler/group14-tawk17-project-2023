@@ -42,15 +42,17 @@ Template::header("Profile", $this->model["error"]);
                 <a href="<?= $this->home ?>/auth/add-children" class="btn">Add your children</a>
             </div>
 
+        <?php endif; ?>
+
+        <div class="account-settings">
             <div class="button">
                 <a href="<?= $this->home ?>/auth/profile/<?= $user_id ?>/edit" class="btn"> Account settings</a>
             </div>
 
-        <?php endif; ?>
-
-        <form action="<?= $this->home ?>/auth/log-out" method="post">
-            <input type="submit" value="Log out" class="btn">
-        </form>
+            <form action="<?= $this->home ?>/auth/log-out" method="post">
+                <input class="logout" type="submit" value="Log out" class="btn">
+            </form>
+        </div>
 
 
         </div>
