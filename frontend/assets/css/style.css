@@ -66,7 +66,6 @@ div.container {
     font-size: 20px;
 }
 
-
 div.new-task {
     background-color: #81b7d6;
     border-radius: 30px;
@@ -248,7 +247,6 @@ div.to-do-list {
 
 div.to-do-list-child {
     display: flex;
-
     margin-bottom: 15px;
     background-color: #81b7d6;
 }
@@ -288,7 +286,6 @@ div.flex-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-
     padding: 20px;
     background-color: #cc5f5f;
 }
@@ -299,7 +296,6 @@ div.checkbox {
 }
 
 div.task-list {
-
     padding: 20px;
     background-color: #cc5f5f;
 }
@@ -321,4 +317,8 @@ ul {
     border: none;
     font-family: 'Coiny';
     font-size: 20px;
+}
+
+.children-list {
+    background-color: white;
 }

@@ -10,7 +10,7 @@ Template::header("New Task");
 
 $url = $_SERVER['REQUEST_URI'];
 $parts = explode('/', $url);
-$child_id = $parts[3];
+$child_id = $parts[4];
 
 $usersService = new UsersService();
 $user = $usersService->getUserById($child_id);
