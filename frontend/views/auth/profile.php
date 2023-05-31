@@ -22,8 +22,8 @@ Template::header("Profile", $this->model["error"]);
 
             <h3>Children:</h3>
             <div class="to-do">
-            <?php if (count($children) > 0) : ?>
-                <ul>
+                <?php if (count($children) > 0) : ?>
+                    <ul>
                     <?php foreach ($children as $child) : ?>
                         <li>
                             <h4><?php echo $child->username; ?></h4>
@@ -32,8 +32,8 @@ Template::header("Profile", $this->model["error"]);
                             </form> 
                         </li></div>
                         <div class="to-do">
-                    <?php endforeach; ?>
-                </ul></div>
+                    <?php endforeach; ?></div>
+                </ul>
             <?php else : ?>
                 <p>No children found for the parent</p>
             <?php endif; ?>
@@ -42,17 +42,15 @@ Template::header("Profile", $this->model["error"]);
                 <a href="<?= $this->home ?>/auth/add-children" class="btn">Add your children</a>
             </div>
 
-        <?php endif; ?>
-
-        <div class="account-settings">
             <div class="button">
                 <a href="<?= $this->home ?>/auth/profile/<?= $user_id ?>/edit" class="btn"> Account settings</a>
             </div>
 
-            <form action="<?= $this->home ?>/auth/log-out" method="post">
-                <input class="logout" type="submit" value="Log out" class="btn">
-            </form>
-        </div>
+        <?php endif; ?>
+
+        <form action="<?= $this->home ?>/auth/log-out" method="post">
+            <input type="submit" value="Log out" class="btn">
+        </form>
 
 
         </div>
