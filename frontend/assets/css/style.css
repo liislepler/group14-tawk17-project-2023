@@ -32,13 +32,44 @@ nav {
     padding: 15px;
     margin: auto;
     text-align: center;
-    width: 70%;
+    width: 50%;
 }
 
 .child-view {
     background-color: #5ea8d2;
     border-radius: 30px;
     padding: 15px;
+    margin: auto;
+    text-align: center;
+    width: 50%;
+}
+
+div.home-page {
+    background-color: #ACCC5F;
+    border-radius: 30px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin: auto;
+    text-align: center;
+    width: 50%;
+}
+
+div.container {
+    border-radius: 30px;
+    background-color: #9cafc9;
+    padding: 30px;
+    padding-bottom: 40px;
+    margin: auto;
+    text-align: center;
+    width: 50%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+
+
+div.new-task {
+    background-color: #81b7d6;
+    border-radius: 30px;
     margin: auto;
     text-align: center;
     width: 50%;
@@ -199,42 +230,10 @@ div {
     font-size: 20px;
 }
 
-div.container {
-    border-radius: 30px;
-    background-color: #9cafc9;
-    padding: 30px;
-    padding-bottom: 40px;
-    margin: auto;
-    text-align: center;
-    width: 70%;
-    font-family: 'Roboto', sans-serif;
-    font-size: 20px;
-}
-
-div.home-page {
-    background-color: #ACCC5F;
-    border-radius: 30px;
-    padding-top: 5%;
-    padding-bottom: 5%;
-    margin: auto;
-    text-align: center;
-    width: 70%;
-}
-
-div.new-task {
-    background-color: #81b7d6;
-    border-radius: 30px;
-    padding-top: 5%;
-    padding-bottom: 5%;
-    margin: auto;
-    text-align: center;
-    width: 70%;
-}
-
 div.home-page-text {
     background-color: white;
-    width: 80%;
     padding: 50px;
+    margin: 0;
 }
 
 div.item-grid {
@@ -244,25 +243,22 @@ div.item-grid {
 div.to-do-list {
     display: flex;
     margin-bottom: 15px;
-    width: 95%;
     background-color: #ffe6a1;
 }
 
 div.to-do-list-child {
     display: flex;
+
     margin-bottom: 15px;
-    width: 95%;
     background-color: #81b7d6;
 }
 
 div.logged-tasks {
-    width: 95%;
     background-color: #ffe6a1;
     margin-bottom: 15px;
 }
 
 div.to-do {
-    align-items: stretch;
     background-color: #ffe6a1;
     margin-top: 0;
 }
@@ -292,7 +288,7 @@ div.flex-container {
     display: flex;
     flex-wrap: wrap;
     justify-content: center;
-    width: 250px;
+
     padding: 20px;
     background-color: #cc5f5f;
 }
@@ -303,7 +299,7 @@ div.checkbox {
 }
 
 div.task-list {
-    width: 250px;
+
     padding: 20px;
     background-color: #cc5f5f;
 }
