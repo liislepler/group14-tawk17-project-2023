@@ -5,7 +5,6 @@
 .add-children,
 .edit,
 .new-task,
-
 header {
     color: rgb(32, 32, 32);
     margin: auto;
@@ -22,7 +21,7 @@ nav {
     padding: 15px;
     margin: auto;
     text-align: center;
-    width: 70%;
+    width: 50%;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
 }
@@ -36,18 +35,17 @@ nav {
     width: 70%;
 }
 
-
 .child-view {
     background-color: #5ea8d2;
     border-radius: 30px;
     padding: 15px;
     margin: auto;
     text-align: center;
-    width: 70%;
+    width: 50%;
 }
 
 h1 {
-    padding-top:30px;
+    padding-top: 30px;
     padding-bottom: 20px;
     margin: auto;
     font-family: 'Coiny';
@@ -132,11 +130,12 @@ button {
 a:hover {
     background-color: #7da520;
 }
+
 button:hover {
     background-color: #7da520;
 }
 
-input.btn.delete-btn{
+input.btn.delete-btn {
     background-color: #cc5f5f;
     color: rgb(32, 32, 32);
     padding: 5px;
@@ -166,7 +165,7 @@ input.btn {
     font-size: 20px;
 }
 
-input.btn.delete-btn{
+input.btn.delete-btn {
     background-color: #cc5f5f;
     color: rgb(32, 32, 32);
     padding: 5px;
@@ -196,7 +195,6 @@ div {
     margin-bottom: 10px;
     text-align: center;
     align-content: center;
-    width: 80%;
     font-family: 'Roboto', sans-serif;
     font-size: 20px;
 }
@@ -236,7 +234,7 @@ div.new-task {
 div.home-page-text {
     background-color: white;
     width: 80%;
-    padding: 50px;     
+    padding: 50px;
 }
 
 div.item-grid {
@@ -281,9 +279,7 @@ div.done {
 
 div.logs {
     background-color: white;
-    width: 90%;
     display: flexbox;
-
 }
 
 div.button {
