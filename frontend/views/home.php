@@ -25,7 +25,8 @@ $user = getUser();
                 <?php 
                 $currentDateTime = date('d.m.y');
                 $currentDayOfWeek = date('l');
-                echo "Today is " . $currentDayOfWeek . " " . $currentDateTime;?> 
+                echo "Today is " . $currentDayOfWeek . " " . $currentDateTime;
+                ?> 
             </h4>
             <h1><?= $this->user->username ?>'s view </h1>
 
@@ -126,6 +127,13 @@ $user = getUser();
 
     <?php if ($this->user->user_role === "child") : ?>
         <div class="child-view">
+        <h4>
+            <?php 
+            $currentDateTime = date('d.m.y');
+            $currentDayOfWeek = date('l');
+            echo "Today is " . $currentDayOfWeek . " " . $currentDateTime;
+            ?> 
+        </h4>
         <h1><?= $this->user->username ?>'s view </h1>
             <div class="to-do-list-child">
                 <?php
