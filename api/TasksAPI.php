@@ -72,7 +72,7 @@ class TasksAPI extends RestAPI
             $this->notFound();
         }
 
-        if ($task->child !== $this->user->user_id || $task->parent !== $this->user->user_id) {
+        if ($task->child !== $this->user->user_id && $task->parent !== $this->user->user_id) {
             $this->forbidden();
         }
 
@@ -113,7 +113,6 @@ class TasksAPI extends RestAPI
             $task->school = $this->body["school"];
             $task->chore = $this->body["chore"];
             $task->food = $this->body["food"];
-            $task->child = $this->body["child"];
 
             $success = TasksService::updateTaskById($id, $task);
 

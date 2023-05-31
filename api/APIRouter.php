@@ -6,6 +6,8 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
 }
 
 require_once __DIR__ . "/AuthAPI.php";
+require_once __DIR__ . "/TasksAPI.php";
+require_once __DIR__ . "/LogsAPI.php";
 require_once __DIR__ . "/APIRoot.php";
 
 // Class for routing all our API requests
@@ -24,7 +26,8 @@ class APIRouter
             // Whenever someone calls "api/feed" we 
             // will load the FeedAPI class
             "auth" => "AuthAPI",
-            "feed" => "FeedAPI",
+            "tasks" => "TasksAPI",
+            "logs" => "LogsAPI",
             "root" => "APIRoot"
         ];
 

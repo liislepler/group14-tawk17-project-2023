@@ -22,18 +22,19 @@ Template::header("Profile", $this->model["error"]);
 
             <h3>Children:</h3>
             <div class="to-do">
-                <?php if (count($children) > 0) : ?>
-                    <ul>
+            <?php if (count($children) > 0) : ?>
+                <ul>
                     <?php foreach ($children as $child) : ?>
                         <li>
-                            <h4><?php echo $child->username; ?></h4>
+                        <div class="to-do">
+                            <h3><?php echo $child->username; ?></h3>
                             <form action="<?= $this->home ?>/auth/profile/<?= $child->user_id ?>/delete-child" method="post" onsubmit="return confirmDelete()">
                                 <input type="submit" value="Delete" class="btn delete-btn">
                             </form> 
                         </li></div>
                         <div class="to-do">
-                    <?php endforeach; ?></div>
-                </ul>
+                    <?php endforeach; ?>
+                </ul></div>
             <?php else : ?>
                 <p>No children found for the parent</p>
             <?php endif; ?>
