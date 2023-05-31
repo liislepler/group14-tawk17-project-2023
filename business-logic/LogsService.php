@@ -18,6 +18,25 @@ class LogsService {
         return $success;
     }
 
+    public function getLogsForParent($user_id)
+    {
+        $users_database = new UsersDatabase();
+        $logs_database = new LogsDatabase();
+    
+        // Get the children of the parent user
+        $children = $users_database->getChildrenByParentId($user_id);
+    
+        $logs = [];
+    
+        // Loop through each child and fetch their logs
+        foreach ($children as $child) {
+            $child_logs = $logs_database->getLogsByChildId($child->user_id);
+            $logs = array_merge($logs, $child_logs);
+        }
+    
+        return $logs;
+    }
+
     public static function getLogsForChild($child) 
     {
         $logs_database = new LogsDatabase();
