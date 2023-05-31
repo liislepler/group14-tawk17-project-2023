@@ -31,11 +31,11 @@ class Template
         <body>
             <header>
                 <nav>
-                    <a href="<?= $home_path ?>">Trackersaurus</a>
+                    <a href="<?= $home_path ?>" class="navigation">Trackersaurus</a>
                     <?php if ($user) : ?>
-                        <a href="<?= $home_path ?>/auth/profile">Profile</a>
+                        <a href="<?= $home_path ?>/auth/profile" class="navigation">Profile</a>
                     <?php else : ?>
-                        <a href="<?= $home_path ?>/auth/log-in">Log in</a>
+                        <a href="<?= $home_path ?>/auth/log-in" class="navigation">Log in</a>
                     <?php endif; ?>
                 </nav>
             </header>

@@ -2,49 +2,78 @@
 require_once __DIR__ . "/../../Template.php";
 require_once __DIR__ . "/../../../business-logic/UsersService.php";
 
+
+error_reporting(E_ALL);
+ini_set('display_errors', 1);
+
 Template::header("New Task");
 
 $url = $_SERVER['REQUEST_URI'];
 $parts = explode('/', $url);
-$child_id = $parts[4];
+$child_id = $parts[3];
 
 $usersService = new UsersService();
 $user = $usersService->getUserById($child_id);
 
 ?>
 
-<h1>New Task for <?= $user->username ?></h1>
+<div class="new-task">
+    <h1>New Task for <?= $user->username ?></h1>
+
+    <div class="flex-container">
+        <form action="<?= $this->home ?>/parent-tasks/<?= $user->user_id ?>/new-task" method="post">
+            <div class="task-list">
+                <label>
+                    <h3>School:</h3>
+                </label>
+                <div class="div">
+                    <?php
+                    $schoolOptions = ['P.E.', 'Math', 'Language', 'Homework', 'Presentation', 'Groupwork'];
+                    foreach ($schoolOptions as $option) {
+                        echo '<div class="checkbox"><input type="checkbox" name="school[]" value="' . $option . '"> ' . $option . '</div>';
+                    }
+                    ?></div>
+            </div>
+    </div>
 
 
-<form action="<?= $this->home ?>/parent-tasks/<?= $user->user_id ?>/new-task" method="post">
-    <label>School:</label>
-    <?php
-        $schoolOptions = ['P.E.', 'Math', 'Language', 'Homework', 'Presentation', 'Groupwork' ];
-        foreach ($schoolOptions as $option) {
-            echo '<div><input type="checkbox" name="school[]" value="' . $option . '"> ' . $option . '</div>';
-        }
-    ?>
+    <div class="flex-container">
+        <div class="task-list">
+            <label>
+                <h3>Chore:</h3>
+            </label>
+            <div class="div">
+                <?php
+                $choreOptions = ['Clean the room', 'Wash dishes', 'Take out the trash', 'Do laundry', 'Mow the lawn'];
+                foreach ($choreOptions as $option) {
+                    echo '<div class="checkbox"><input type="checkbox" name="chore[]" value="' . $option . '"> ' . $option . '</div>';
+                }
+                ?> </div>
+        </div>
+    </div>
 
-    <label>Chore:</label>
-    <?php
-        $choreOptions = ['Clean the room', 'Wash dishes', 'Take out the trash', 'Do laundry', 'Mow the lawn'];
-        foreach ($choreOptions as $option) {
-            echo '<div><input type="checkbox" name="chore[]" value="' . $option . '"> ' . $option . '</div>';
-        }
-    ?>
+    <div class="flex-container">
+        <div class="task-list">
+            <label>
+                <h3>Food:</h3>
+            </label>
+            <div class="div">
+                <?php
+                $foodOptions = ['Breakfast', 'Lunch', 'Dinner', 'Snacks', 'Dessert'];
+                foreach ($foodOptions as $option) {
+                    echo '<div class="checkbox"><input type="checkbox" name="food[]" value="' . $option . '"> ' . $option . '</div>';
+                }
+                ?> </div>
+        </div>
+    </div>
 
-    <label>Food:</label>
-    <?php
-        $foodOptions = ['Breakfast', 'Lunch', 'Dinner', 'Snacks', 'Dessert'];
-        foreach ($foodOptions as $option) {
-            echo '<div><input type="checkbox" name="food[]" value="' . $option . '"> ' . $option . '</div>';
-        }
-    ?>
-
-    Status: <input type="number" name="status" placeholder="To-do" readonly style="border: none;"> <br>
+    <h3>Status: <input type="number" name="status" placeholder="To-do" readonly style="border: none;"> </h3><br>
 
     <input type="hidden" name="child" value="<?= $user->user_id ?>"> <br>
     <input type="hidden" name="parent" value="<?= $this->user->user_id ?>"> <br>
 
     <input type="submit" value="Save" class="btn">
-</form>
+    </form>
+
+</div>
+</div>

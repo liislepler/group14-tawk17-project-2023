@@ -4,6 +4,8 @@
 .profile,
 .add-children,
 .edit,
+.new-task,
+
 header {
     color: rgb(32, 32, 32);
     margin: auto;
@@ -14,9 +16,39 @@ nav {
     text-align: center;
 }
 
+.parent-view {
+    border-radius: 30px;
+    background-color: #facf58;
+    padding: 15px;
+    margin: auto;
+    text-align: center;
+    width: 70%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+
+.profile {
+    border-radius: 30px;
+    background-color: #ACCC5F;
+    padding: 15px;
+    margin: auto;
+    text-align: center;
+    width: 70%;
+}
+
+
+.child-view {
+    background-color: #5ea8d2;
+    border-radius: 30px;
+    padding: 15px;
+    margin: auto;
+    text-align: center;
+    width: 70%;
+}
+
 h1 {
-    padding-top: 30px;
-    padding-bottom: 30px;
+    padding-top:30px;
+    padding-bottom: 20px;
     margin: auto;
     font-family: 'Coiny';
     font-size: 40px;
@@ -42,7 +74,6 @@ h3 {
 }
 
 h4 {
-    padding-top: 10px;
     font-family: 'Coiny';
     font-size: 20px;
     margin: auto;
@@ -65,11 +96,16 @@ a {
     padding: 10px;
 }
 
+a.navigation:hover {
+    background-color: white;
+    color: #698822;
+}
+
 a.btn {
     background-color: #ACCC5F;
     color: rgb(32, 32, 32);
-    padding: 15px;
-    margin: 10px;
+    padding: 20px;
+    margin: 20px;
     border-radius: 15px;
     border: none;
     font-family: 'Coiny';
@@ -93,6 +129,9 @@ button {
     font-size: 20px;
 }
 
+a:hover {
+    background-color: #7da520;
+}
 button:hover {
     background-color: #7da520;
 }
@@ -139,14 +178,138 @@ input.btn.delete-btn{
     width: 20%;
 }
 
+.checkbox input {
+    height: 25px;
+    width: 25px;
+}
+
+input:checked {
+    height: 25px;
+    width: 25px;
+}
 
 div {
     border-radius: 30px;
-    background-color: #ffe6a1;
+    background-color: white;
     padding: 15px;
+    margin-top: 10px;
+    margin-bottom: 10px;
+    text-align: center;
+    align-content: center;
+    width: 80%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+
+div.container {
+    border-radius: 30px;
+    background-color: #9cafc9;
+    padding: 30px;
+    padding-bottom: 40px;
     margin: auto;
     text-align: center;
-    width: 60%;
+    width: 70%;
+    font-family: 'Roboto', sans-serif;
+    font-size: 20px;
+}
+
+div.home-page {
+    background-color: #ACCC5F;
+    border-radius: 30px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin: auto;
+    text-align: center;
+    width: 70%;
+}
+
+div.new-task {
+    background-color: #81b7d6;
+    border-radius: 30px;
+    padding-top: 5%;
+    padding-bottom: 5%;
+    margin: auto;
+    text-align: center;
+    width: 70%;
+}
+
+div.home-page-text {
+    background-color: white;
+    width: 80%;
+    padding: 50px;     
+}
+
+div.item-grid {
+    padding: 5%;
+}
+
+div.to-do-list {
+    display: flex;
+    margin-bottom: 15px;
+    width: 95%;
+    background-color: #ffe6a1;
+}
+
+div.to-do-list-child {
+    display: flex;
+    margin-bottom: 15px;
+    width: 95%;
+    background-color: #81b7d6;
+}
+
+div.logged-tasks {
+    width: 95%;
+    background-color: #ffe6a1;
+    margin-bottom: 15px;
+}
+
+div.to-do {
+    align-items: stretch;
+    background-color: #ffe6a1;
+    margin-top: 0;
+}
+
+div.to-do-child {
+    align-items: stretch;
+    background-color: #81b7d6;
+    margin-top: 0;
+}
+
+div.done {
+    background-color: #ffe6a1;
+}
+
+div.logs {
+    background-color: white;
+    width: 90%;
+    display: flexbox;
+
+}
+
+div.button {
+    margin: 15px;
+    align-content: center;
+    align-items: center;
+}
+
+div.flex-container {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+    width: 250px;
+    padding: 20px;
+    background-color: #cc5f5f;
+}
+
+div.checkbox {
+    padding: 0;
+    text-align: left;
+}
+
+div.task-list {
+    width: 250px;
+    padding: 20px;
+    background-color: #cc5f5f;
 }
 
 li {
@@ -159,15 +322,4 @@ ul {
     list-style: inside;
     margin: 0;
     padding: 0;
-}
-
-.to-do-list {
-    display: flex;
-    width: 100%;
-    padding: 0;
-}
-
-.one-child {
-    background-color: #ffe6a1;
-    margin-bottom: 50px;
 }

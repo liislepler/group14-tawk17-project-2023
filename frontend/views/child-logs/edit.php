@@ -5,7 +5,7 @@ Template::header("Edit");
 
 $url = $_SERVER['REQUEST_URI'];
 $parts = explode('/', $url);
-$log_id = $parts[4];
+$log_id = $parts[3];
 
 $LogsService = new LogsService();
 $log = $LogsService->getLogById($log_id);

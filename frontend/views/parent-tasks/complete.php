@@ -5,7 +5,7 @@ Template::header("Edit");
 
 $url = $_SERVER['REQUEST_URI'];
 $parts = explode('/', $url);
-$task_id = $parts[4];
+$task_id = $parts[3];
 
 $TasksService = new TasksService();
 $task = $TasksService->getTaskById($task_id);

@@ -6,18 +6,21 @@ Template::header("Login", $this->model["error"]);
 
 <div class="container">
 
-<h1>Welcome back!</h1>
+    <h1>Welcome back!</h1>
 
-<form autocomplete="off" action="<?= $this->home ?>/auth/log-in" method="post">
-<h4>Username</h4>
-    <input type="text" name="username" placeholder="Username"> <br>
-    <h4>Password</h4>
-    <input type="password" name="password" placeholder="Password"> <br>
+    <form autocomplete="off" action="<?= $this->home ?>/auth/log-in" method="post">
+        <h4>Username</h4>
+        <input type="text" name="username" placeholder="Username"> <br>
+        <h4>Password</h4>
+        <input type="password" name="password" placeholder="Password"> <br>
 
-<button type="submit" class="btn">Log in</button>
-
-</form>
+        <button type="submit" class="btn">Log in</button>
+    </form>
 
     <h3>Don't have an account?</h3>
-    <a href="<?= $this->home ?>/auth/create-account"><button>Create account</button></a>
+
+        <a href="<?= $this->home ?>/auth/create-account" class="btn">Create account</a>
+        <br>
+
+
 </div>
