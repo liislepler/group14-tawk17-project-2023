@@ -23,7 +23,12 @@ class AuthAPI extends RestAPI
 
         // POST: /api/auth/create-account
         if ($this->method == "POST" && $this->path_count == 3 && $this->path_parts[2] == "create-account") {
-            $this->registerUser();
+            $this->registerParent();
+        }
+
+        // POST: /api/auth/add-child
+        if ($this->method == "POST" && $this->path_count == 3 && $this->path_parts[2] == "add-child") {
+            $this->registerChild();
         }
 
         // POST: /api/auth/login
@@ -46,13 +51,13 @@ class AuthAPI extends RestAPI
     }
 
     
-    private function registerUser()
+    private function registerParent()
     {
         $user = new UserModel();
 
         $user->username = $this->body["username"];
-        $user->user_role = $this->body["user_role"];
         $password = $this->body["password"];
+        $user->user_role = "parent";
 
         $success = AuthService::registerUser($user, $password);
 
@@ -63,6 +68,25 @@ class AuthAPI extends RestAPI
             $this->invalidRequest();
         }
     }
+
+    private function registerChild()
+    {
+        $user = new UserModel();
+
+        $user->username = $this->body["username"];
+        $password = $this->body["password"];
+        $user->user_role = "child";
+        $user->parent_id = $this->user->user_id;
+
+        $success = AuthService::registerUser($user, $password);
+
+        if($success){
+            $this->created();
+        }
+        else{
+            $this->invalidRequest();
+        }
+    } 
 
     
     private function login()

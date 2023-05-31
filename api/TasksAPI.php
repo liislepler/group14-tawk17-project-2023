@@ -90,8 +90,8 @@ class TasksAPI extends RestAPI
         $task->chore = $this->body["chore"];
         $task->food = $this->body["food"];
         $task->child = $this->body["child"];
-        $task->status = $this->body["status"];
-        $task->parent = $this->body["parent"];
+        $task->status = "1";
+        $task->parent = $this->user->user_id;
 
         $success = TasksService::addTask($task);
 
