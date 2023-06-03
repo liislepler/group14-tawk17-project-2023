@@ -91,7 +91,7 @@ $user = getUser();
 
                             <?php foreach ($logs as $log) : ?>
                                 <div class="logged-tasks">
-                                    <h4>Logged: INSERT API FOR TIME</h4><br>
+                                    <h4>Logged:</h4><br>
                                     <div>
                                     <?php if (!empty($log->emotion)) : ?>
                                         <h4> Emotion: </h4><?= $log->emotion ?><br>

@@ -136,7 +136,7 @@ $log = $LogsService->getLogById($log_id);
 
 <input type="submit" value="Save" class="btn">
 
-</form>
+
 
 <form action="<?= $this->home ?>/child-logs/<?= $log_id ?>/delete" method="post" onsubmit="return confirmDelete()">
     <input type="submit" value="Delete" class="btn delete-btn">
