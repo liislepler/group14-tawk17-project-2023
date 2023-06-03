@@ -121,9 +121,12 @@ class TasksAPI extends RestAPI
             } else {
                 $this->error();
             }
-        } else {
+        } 
+        if ($this->user->user_role === "child") {
             $task = new TasksModel();
 
+            $task->school;
+            $task->chore;
             $task->status = $this->body["status"];
 
             $success = TasksService::updateTaskById($id, $task);
