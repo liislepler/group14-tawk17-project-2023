@@ -7,55 +7,24 @@ $user_id = $this->user->user_id;
 $usersService = new UsersService();
 $children = $usersService->getChildrenForParent($parent_id);
 
-Template::header("Profile", $this->model["error"]);
+Template::header("Profile");
 ?>
 
 <div class="profile">
 
-<<<<<<< HEAD
     <div class="item-grid">
         <h3>Dinosaur of the day:</h3>
 
-        <?php if (isset($this->model['name'])): ?>
         <h2>Dinosaur Name:</h2>
-        <p><?= $this->model['name']; ?></p>
-        <?php else: ?>
-        <p>No dinosaur name found.</p>
-        <?php endif; ?>
+        <p><?php echo $this->model['name'] ?? 'No dinosaur name found.'; ?></p>
 
-        <?php if (isset($this->model['description'])): ?>
         <h2>Dinosaur Description:</h2>
-        <p><?= $this->model['description']; ?></p>
-        <?php else: ?>
-        <p>No dinosaur description found.</p>
-        <?php endif; ?>
+        <p><?php echo $this->model['description'] ?? 'No dinosaur description found.'; ?></p>
+
+        <button onclick="refreshPage()">Get a new one</button>
     </div>
-=======
-    <?php if (!empty($this->model)) : ?>
-        <div class="item-grid">
-            <h3>Dinosaur of the day:</h3>
-
-            <?php if (isset($this->model['name'])) : ?>
-                <h2>Dinosaur Name:</h2>
-                <p><?php echo $this->model['name']; ?></p>
-            <?php else : ?>
-                <p>No dinosaur name found.</p>
-            <?php endif; ?>
-
-            <?php if (isset($this->model['description'])) : ?>
-                <h2>Dinosaur Description:</h2>
-                <p><?php echo $this->model['description']; ?></p>
-            <?php else : ?>
-                <p>No dinosaur description found.</p>
-            <?php endif; ?>
-        </div>
-    <?php else : ?>
-        <p>No data available.</p>
-    <?php endif; ?>
-
 
     <h1>Logged in as: <?= $this->user->username ?></h1>
->>>>>>> bdeb0297781662085f21cf3782060f139e00cb6f
 
     <div class="account-settings">
         <div class="button">
@@ -109,5 +78,9 @@ Template::header("Profile", $this->model["error"]);
     <script>
         function confirmDelete() {
             return confirm("Are you sure you want to delete this child?");
+        }
+
+        function refreshPage() {
+            location.reload();
         }
     </script>

@@ -2,9 +2,9 @@
 
 class DinosaurFetcher
 {
-    private $base_url = "https://dinosaur-facts-api.shultzlab.com/dinosaurs/random/name";
+    private $base_url = "https://dinosaur-facts-api.shultzlab.com/dinosaurs/random";
 
-    public function getName()
+    public function getDinosaur()
     {
         $url = $this->base_url;
 

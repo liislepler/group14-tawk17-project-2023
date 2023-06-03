@@ -14,7 +14,6 @@ require_once __DIR__ . "/controllers/HomeController.php";
 require_once __DIR__ . "/controllers/AssetsController.php";
 require_once __DIR__ . "/controllers/TasksController.php";
 require_once __DIR__ . "/controllers/LogsController.php";
-require_once __DIR__ . "/controllers/DinosaurController.php";
 
 // Class for routing all our API requests
 
