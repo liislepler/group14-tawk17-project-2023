@@ -82,7 +82,7 @@ class TasksAPI extends RestAPI
 
     private function postOne()
     {
-        $this->requireAuth();
+        $this->requireAuth(["parent"]);
 
         $task = new TasksModel();
 
@@ -90,7 +90,7 @@ class TasksAPI extends RestAPI
         $task->chore = $this->body["chore"];
         $task->food = $this->body["food"];
         $task->child = $this->body["child"];
-        $task->status = "1";
+        $task->status = "0";
         $task->parent = $this->user->user_id;
 
         $success = TasksService::addTask($task);
@@ -121,12 +121,13 @@ class TasksAPI extends RestAPI
             } else {
                 $this->error();
             }
-        } else {
+        } 
+        if ($this->user->user_role === "child") {
             $task = new TasksModel();
 
             $task->status = $this->body["status"];
 
-            $success = TasksService::updateTaskById($id, $task);
+            $success = TasksService::completeTaskById($id, $task);
 
             if ($success) {
                 $this->ok();

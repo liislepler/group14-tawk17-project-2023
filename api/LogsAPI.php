@@ -84,11 +84,11 @@ class LogsAPI extends RestAPI
 
     private function postOne()
     {
-        $this->requireAuth();
+        $this->requireAuth(["child"]);
 
         $log = new LogsModel();
 
-        $log->child = $this->body["child"];
+        $log->child = $this->user->user_id;
         $log->emotion = $this->body["emotion"];
         $log->social = $this->body["social"];
         $log->hobby = $this->body["hobby"];
@@ -108,34 +108,29 @@ class LogsAPI extends RestAPI
 
     private function putOne($id)
     {
-        $this->requireAuth();
+        $this->requireAuth(["child"]);
 
-        if ($this->user->user_role === "child") {
-            $log = new LogsModel();
+        $log = new LogsModel();
 
-            $log->emotion = $this->body["emotion"];
-            $log->social = $this->body["social"];
-            $log->hobby = $this->body["hobby"];
-            $log->school = $this->body["school"];
-            $log->chore = $this->body["chore"];
-            $log->food = $this->body["food"];
+        $log->emotion = $this->body["emotion"];
+        $log->social = $this->body["social"];
+        $log->hobby = $this->body["hobby"];
+        $log->school = $this->body["school"];
+        $log->chore = $this->body["chore"];
+        $log->food = $this->body["food"];
 
-            $success = LogsService::updateLogById($id, $log);
+        $success = LogsService::updateLogById($id, $log);
 
-            if ($success) {
-                $this->ok();
-            } else {
-                $this->error();
-            }
+        if ($success) {
+            $this->ok();
         } else {
-            $this->forbidden();
+            $this->error();
         }
     }
 
     // Deletes the task with the specified ID in the DB
     private function deleteOne($id)
     {
-        // only admins can delete purchases
         $this->requireAuth(["child"]);
 
         $log = LogsService::getLogById($id);
