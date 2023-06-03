@@ -21,6 +21,11 @@ class AuthAPI extends RestAPI
             $this->getUser();
         }
 
+        // GET: /api/auth/children
+        if ($this->method == "GET" && $this->path_count == 3 && $this->path_parts[2] == "children") {
+            $this->getChildren();
+        }
+
         // POST: /api/auth/create-account
         if ($this->method == "POST" && $this->path_count == 3 && $this->path_parts[2] == "create-account") {
             $this->registerParent();
@@ -86,6 +91,23 @@ class AuthAPI extends RestAPI
         else{
             $this->invalidRequest();
         }
+    } 
+
+    private function getChildren()
+    {
+        $this->requireAuth(["parent"]);
+
+        $children = UsersService::getChildrenForParent($this->user->user_id);
+
+        $childData = array();
+        foreach ($children as $child) {
+            $childData[] = array(
+                'username' => $child->username,
+                'id' => $child->user_id
+            );
+        }
+        
+        $this->sendJson($childData);
     } 
 
     
