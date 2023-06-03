@@ -12,6 +12,7 @@ Template::header("Profile", $this->model["error"]);
 
 <div class="profile">
 
+<<<<<<< HEAD
     <div class="item-grid">
         <h3>Dinosaur of the day:</h3>
 
@@ -29,13 +30,37 @@ Template::header("Profile", $this->model["error"]);
         <p>No dinosaur description found.</p>
         <?php endif; ?>
     </div>
+=======
+    <?php if (!empty($this->model)) : ?>
+        <div class="item-grid">
+            <h3>Dinosaur of the day:</h3>
+
+            <?php if (isset($this->model['name'])) : ?>
+                <h2>Dinosaur Name:</h2>
+                <p><?php echo $this->model['name']; ?></p>
+            <?php else : ?>
+                <p>No dinosaur name found.</p>
+            <?php endif; ?>
+
+            <?php if (isset($this->model['description'])) : ?>
+                <h2>Dinosaur Description:</h2>
+                <p><?php echo $this->model['description']; ?></p>
+            <?php else : ?>
+                <p>No dinosaur description found.</p>
+            <?php endif; ?>
+        </div>
+    <?php else : ?>
+        <p>No data available.</p>
+    <?php endif; ?>
+
+
+    <h1>Logged in as: <?= $this->user->username ?></h1>
+>>>>>>> bdeb0297781662085f21cf3782060f139e00cb6f
 
     <div class="account-settings">
         <div class="button">
             <a href="<?= $this->home ?>/auth/profile/<?= $user_id ?>/edit" class="btn"> Account settings</a>
         </div>
-
-        <h1>Logged in as: <?= $this->user->username ?></h1>
 
         <?php if ($this->user->user_role === "parent") : ?>
             <h4>Parent account</h4>
@@ -78,11 +103,11 @@ Template::header("Profile", $this->model["error"]);
         </form>
 
 
+            </div>
     </div>
-</div>
 
-<script>
-    function confirmDelete() {
-        return confirm("Are you sure you want to delete this child?");
-    }
-</script>
+    <script>
+        function confirmDelete() {
+            return confirm("Are you sure you want to delete this child?");
+        }
+    </script>

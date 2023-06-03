@@ -49,88 +49,111 @@ $log = $LogsService->getLogById($log_id);
                         </div>
                     </div>
             </div>
+    </div>
 
 
-            <div class="flex-container">
-                <div class="task-list">
-                    <label>
-                        <h3>Social:</h3>
-                    </label>
-                    <div class="div">
-                        <?php
-                        foreach ($socialOptions as $option) {
-                            $isChecked = in_array($option, $log->social) ? 'checked' : '';
-                            echo '<div><input type="checkbox" name="social[]" value="' . $option . '" ' . $isChecked . '> ' . $option . '</div>';
-                        }
-                        ?>
-                    </div>
-                </div>
+    <div class="flex-container">
+        <div class="task-list">
+            <label>
+                <h3>Social:</h3>
+            </label>
+            <div class="div">
+                <?php
+                foreach ($socialOptions as $option) {
+                    $isChecked = in_array($option, $log->social) ? 'checked' : '';
+                    echo '<div class="checkbox"><input type="checkbox" name="social[]" value="' . $option . '" ' . $isChecked . '> ' . $option . '</div>';
+                }
+                ?>
             </div>
+        </div>
+    </div>
 
 
-            <div class="flex-container">
-                <div class="task-list">
-                    <label>
-                        <h3>Hobby:</h3>
-                    </label>
-                    <div class="div">
-                        <?php
-                        foreach ($hobbyOptions as $option) {
-                            $isChecked = in_array($option, $log->hobby) ? 'checked' : '';
-                            echo '<div><input type="checkbox" name="hobby[]" value="' . $option . '" ' . $isChecked . '> ' . $option . '</div>';
-                        }
-                        ?>
-                    </div>
-                </div>
+    <div class="flex-container">
+        <div class="task-list">
+            <label>
+                <h3>Hobby:</h3>
+            </label>
+            <div class="div">
+                <?php
+                foreach ($hobbyOptions as $option) {
+                    $isChecked = in_array($option, $log->hobby) ? 'checked' : '';
+                    echo '<div class="checkbox"><input type="checkbox" name="hobby[]" value="' . $option . '" ' . $isChecked . '> ' . $option . '</div>';
+                }
+                ?>
             </div>
+        </div>
+    </div>
 
-            <label>School:</label>
+    <div class="flex-container">
+        <div class="task-list">
+            <label>
+                <h3>School:</h3>
+            </label>
+            <div class="div">
             <?php
             foreach ($schoolOptions as $option) {
                 $isChecked = in_array($option, $log->school) ? 'checked' : '';
-                echo '<div><input type="checkbox" name="school[]" value="' . $option . '" ' . $isChecked . '> ' . $option . '</div>';
+                echo '<div class="checkbox"><input type="checkbox" name="school[]" value="' . $option . '" ' . $isChecked . '> ' . $option . '</div>';
             }
             ?>
+        </div>
+    </div>
+</div>
 
-            <label>Chore:</label>
+<div class="flex-container">
+    <div class="task-list">
+        <label>
+            <h3>Chore:</h3>
+        </label>
+        <div class="div">
             <?php
             foreach ($choreOptions as $option) {
                 $isChecked = in_array($option, $log->chore) ? 'checked' : '';
-                echo '<div><input type="checkbox" name="chore[]" value="' . $option . '" ' . $isChecked . '> ' . $option . '</div>';
+                echo '<div class="checkbox"><input type="checkbox" name="chore[]" value="' . $option . '" ' . $isChecked . '> ' . $option . '</div>';
             }
-            ?>
+            ?></div>
+    </div>
+</div>
 
-            <label>Food:</label>
+<div class="flex-container">
+    <div class="task-list">
+        <label>
+            <h3>Food:</h3>
+        </label>
+        <div class="div">
             <?php
             foreach ($foodOptions as $option) {
                 $isChecked = in_array($option, $log->food) ? 'checked' : '';
-                echo '<div><input type="checkbox" name="food[]" value="' . $option . '" ' . $isChecked . '> ' . $option . '</div>';
+                echo '<div class="checkbox"><input type="checkbox" name="food[]" value="' . $option . '" ' . $isChecked . '> ' . $option . '</div>';
             }
-            ?>
+            ?></div>
+    </div>
+</div>
 
-            <input type="hidden" name="log_id" value="<?= $log->log_id ?>"> <br>
-            <input type="hidden" name="child" value="<?= $this->user->user_id ?>"> <br>
+<input type="hidden" name="log_id" value="<?= $log->log_id ?>"> <br>
+<input type="hidden" name="child" value="<?= $this->user->user_id ?>"> <br>
 
-            <input type="submit" value="Save" class="btn">
+<input type="submit" value="Save" class="btn">
 
-            </form>
+</form>
 
-            <form action="<?= $this->home ?>/child-logs/<?= $log_id ?>/delete" method="post" onsubmit="return confirmDelete()">
-                <input type="submit" value="Delete" class="btn delete-btn">
-            </form>
-        <?php
+<form action="<?= $this->home ?>/child-logs/<?= $log_id ?>/delete" method="post" onsubmit="return confirmDelete()">
+    <input type="submit" value="Delete" class="btn delete-btn">
+</form>
+<?php
         } else {
             // Display an error message or handle the case where the task doesn't exist
             echo 'Logs not found.';
         }
-        ?>
+?>
 
-        <script>
-            function confirmDelete() {
-                return confirm('Are you sure you want to delete this log?');
-            }
-        </script>
+<script>
+    function confirmDelete() {
+        return confirm('Are you sure you want to delete this log?');
+    }
+</script>
 
 
-    </div>
+</div>
 </div>
