@@ -1,6 +1,6 @@
 <?php
 
-require __DIR__ . "/../dinosaur-data-access/fetcher.php";
+require __DIR__ . "/../data-access/DinosaurFetcher.php";
 
 class DinosaurService {
     public static function getName($name){
@@ -13,7 +13,7 @@ class DinosaurService {
         return $text;
     }
 
-    public static function getNameDescription($name, $description){
+    public static function getDescription($name, $description){
         $dinosaur_fetcher = new DinosaurDescriptionFetcher ();
 
         $description_data = $dinosaur_fetcher->getDescription ($name, $description);
