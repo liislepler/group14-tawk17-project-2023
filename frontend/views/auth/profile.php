@@ -12,27 +12,23 @@ Template::header("Profile", $this->model["error"]);
 
 <div class="profile">
 
-<?php if (!empty($this->model)): ?>
     <div class="item-grid">
         <h3>Dinosaur of the day:</h3>
 
         <?php if (isset($this->model['name'])): ?>
-            <h2>Dinosaur Name:</h2>
-            <p><?php echo $this->model['name']; ?></p>
+        <h2>Dinosaur Name:</h2>
+        <p><?= $this->model['name']; ?></p>
         <?php else: ?>
-            <p>No dinosaur name found.</p>
+        <p>No dinosaur name found.</p>
         <?php endif; ?>
 
         <?php if (isset($this->model['description'])): ?>
-            <h2>Dinosaur Description:</h2>
-            <p><?php echo $this->model['description']; ?></p>
+        <h2>Dinosaur Description:</h2>
+        <p><?= $this->model['description']; ?></p>
         <?php else: ?>
-            <p>No dinosaur description found.</p>
+        <p>No dinosaur description found.</p>
         <?php endif; ?>
     </div>
-<?php else: ?>
-    <p>No data available.</p>
-<?php endif; ?>
 
     <div class="account-settings">
         <div class="button">
