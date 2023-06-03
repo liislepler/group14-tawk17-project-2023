@@ -25,7 +25,6 @@ $task = $TasksService->getTaskById($task_id);
         $task->food = explode(',', $task->food);
     ?>
 
-
         <form action="<?= $this->home ?>/parent-tasks/<?= $task_id ?>/edit" method="post" class="center">
 
             <div class="flex-container">
@@ -68,11 +67,11 @@ $task = $TasksService->getTaskById($task_id);
                     ?>
                 </div>
             </div>
-        </form>
+
             <input type="hidden" name="task_id" value="<?= $task->task_id ?>"> <br>
 
             <input type="submit" value="Save" class="btn">
-
+        </form>
 
         <form action="<?= $this->home ?>/parent-tasks/<?= $task_id ?>/delete" method="post" onsubmit="return confirmDelete()">
             <input type="submit" value="Delete" class="btn delete-btn">
@@ -82,7 +81,7 @@ $task = $TasksService->getTaskById($task_id);
     <?php
     } else {
         // Display an error message or handle the case where the task doesn't exist
-        echo 'Logs not found.';
+        echo 'Tasks not found.';
     }
     ?>
         </div>

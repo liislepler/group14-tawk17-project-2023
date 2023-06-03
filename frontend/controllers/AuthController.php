@@ -7,6 +7,8 @@ if (!defined('MY_APP') && basename($_SERVER['PHP_SELF']) == basename(__FILE__)) 
 
 require_once __DIR__ . "/../ConrollerBase.php";
 require_once __DIR__ . "/../../business-logic/AuthService.php";
+require_once __DIR__ . "/../../business-logic/DinosaurService.php";
+
 
 // Class for handling requests to "home/Auth"
 
@@ -74,6 +76,21 @@ class AuthController extends ControllerBase
 
     private function showProfilePage()
     {
+
+        $dinosaur = DinosaurService::getDinosaur();
+        $name = $dinosaur["Name"];
+        $description = $dinosaur["Description"];
+    
+        $this->model = [];
+    
+        if ($name && $description) {
+    
+            $this->model = [
+                'name' => $name,
+                'description' => $description,
+            ];
+        } 
+    
         // Shows the view file auth/register.php
         $this->viewPage("auth/profile");
     }
@@ -261,5 +278,7 @@ class AuthController extends ControllerBase
             $this->error();
         }
     }
+
+    
 
 }
