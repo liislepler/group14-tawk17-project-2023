@@ -19,40 +19,63 @@ Template::header("Profile", $this->model["error"]);
         <h4>Parent account</h4>
 
         <div class="item-grid">
+            <h3>Dinosaur of the day:</h3>
 
+        
+
+
+            <form action="" method="get">
+    <h2>Show me a dinosaur!</h2>
+
+    <select name="to_currency">
+
+        <?php foreach ($this->model["available_currencies"] as $key => $currency) : ?>
+            <option value="<?= $key ?>"><?= $currency ?></option>
+        <?php endforeach; ?>
+
+    </select>
+
+    <input type="submit" value="Convert">
+</form>
+
+        </div>
+
+        <div class="item-grid">
             <h3>Children:</h3>
             <div class="children-list">
-            <?php if (count($children) > 0) : ?>
-                <ul>
-                    <?php foreach ($children as $child) : ?>
-                        <div class="to-do">
-                            <li>
-                                <h3><?php echo $child->username; ?></h3>
-                                <form action="<?= $this->home ?>/auth/profile/<?= $child->user_id ?>/delete-child" method="post" onsubmit="return confirmDelete()">
-                                    <input type="submit" value="Delete" class="btn delete-btn">
-                                </form> 
-                            </li>
-                        </div>
-                    <?php endforeach; ?>
-                </ul>
-            </div>
-            <?php else : ?>
-                <p>No children found for the parent</p>
-            <?php endif; ?>
+                <?php if (count($children) > 0) : ?>
+                    <ul>
+                        <?php foreach ($children as $child) : ?>
+                            <div class="to-do">
+                                <li>
+                                    <h3><?php echo $child->username; ?></h3>
+                                    <form action="<?= $this->home ?>/auth/profile/<?= $child->user_id ?>/delete-child" method="post" onsubmit="return confirmDelete()">
 
-            <div class="button">
-                <a href="<?= $this->home ?>/auth/add-children" class="btn">Add your children</a>
-            </div>
 
-            <div class="button">
-                <a href="<?= $this->home ?>/auth/profile/<?= $user_id ?>/edit" class="btn"> Account settings</a>
+                                        <input type="submit" value="Delete" class="btn delete-btn">
+                                    </form>
+                                </li>
+                            </div>
+                        <?php endforeach; ?>
+                    </ul>
             </div>
-
+        <?php else : ?>
+            <p>No children found for the parent</p>
         <?php endif; ?>
 
-        <form action="<?= $this->home ?>/auth/log-out" method="post">
-            <input type="submit" value="Log out" class="btn">
-        </form>
+        <div class="button">
+            <a href="<?= $this->home ?>/auth/add-children" class="btn">Add your children</a>
+        </div>
+
+        <div class="button">
+            <a href="<?= $this->home ?>/auth/profile/<?= $user_id ?>/edit" class="btn"> Account settings</a>
+        </div>
+
+    <?php endif; ?>
+
+    <form action="<?= $this->home ?>/auth/log-out" method="post">
+        <input type="submit" value="Log out" class="btn">
+    </form>
 
 
         </div>

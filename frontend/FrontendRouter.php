@@ -37,6 +37,8 @@ class FrontendRouter
             "welcome" => "feedController",
             "parent-tasks" => "TasksController",
             "child-logs" => "LogsController"
+            // if we want to add a page for the dinosaurs
+            // "dinosaur" => "DinosaurController"
         ];
 
         $this->path_parts = $path_parts;

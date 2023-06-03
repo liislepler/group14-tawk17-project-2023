@@ -23,9 +23,9 @@ $user = getUser();
         <div class="parent-view">
             <h4>
                 <?php 
-                $currentDateTime = date('d.m.y');
+                $dinosaur_fetcher = date('d.m.y');
                 $currentDayOfWeek = date('l');
-                echo "Today is " . $currentDayOfWeek . " " . $currentDateTime;
+                echo "Today is " . $currentDayOfWeek . " " . $dinosaur_fetcher;
                 ?> 
             </h4>
             <h1><?= $this->user->username ?>'s view </h1>
