@@ -10,7 +10,6 @@ $children = $usersService->getChildrenForParent($parent_id);
 Template::header("Profile", $this->model["error"]);
 ?>
 
-
 <div class="profile">
 
     <h1>Logged in as: <?= $this->user->username ?></h1>
