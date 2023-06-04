@@ -12,19 +12,18 @@ Template::header("Profile");
 
 <div class="profile">
 
+    <h1>Logged in as: <?= $this->user->username ?></h1>
+
     <div class="item-grid">
+
         <h3>Dinosaur of the day:</h3>
 
-        <h2>Dinosaur Name:</h2>
-        <p><?php echo $this->model['name'] ?? 'No dinosaur name found.'; ?></p>
+        <h5><?php echo $this->model['name'] ?? 'No dinosaur name found.'; ?></h5>
 
-        <h2>Dinosaur Description:</h2>
-        <p><?php echo $this->model['description'] ?? 'No dinosaur description found.'; ?></p>
+        <h5><?php echo $this->model['description'] ?? 'No dinosaur description found.'; ?></h5>
 
-        <button onclick="refreshPage()">Get a new one</button>
+        <button onclick="refreshPage()">Show me a new dino!</button>
     </div>
-
-    <h1>Logged in as: <?= $this->user->username ?></h1>
 
     <div class="account-settings">
         <div class="button">

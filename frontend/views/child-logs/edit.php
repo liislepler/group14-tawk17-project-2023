@@ -11,9 +11,8 @@ $LogsService = new LogsService();
 $log = $LogsService->getLogById($log_id);
 ?>
 
-<div class="new-task">
+<div class="new-task-child">
     <h1>Edit log</h1>
-    <div class="flex-container">
 
         <?php
         if ($log) {
@@ -46,7 +45,7 @@ $log = $LogsService->getLogById($log_id);
                                 echo '<div class="checkbox"><input type="checkbox" name="emotion[]" value="' . $option . '" ' . $isChecked . '> ' . $option . '</div>';
                             }
                             ?>
-                        </div>
+                        
                     </div>
             </div>
     </div>
@@ -133,14 +132,12 @@ $log = $LogsService->getLogById($log_id);
 
 <input type="hidden" name="log_id" value="<?= $log->log_id ?>"> <br>
 <input type="hidden" name="child" value="<?= $this->user->user_id ?>"> <br>
-
-<input type="submit" value="Save" class="btn">
-
-
-
 <form action="<?= $this->home ?>/child-logs/<?= $log_id ?>/delete" method="post" onsubmit="return confirmDelete()">
     <input type="submit" value="Delete" class="btn delete-btn">
-</form>
+</form><br>
+<input type="submit" value="Save" class="btn"> 
+
+
 <?php
         } else {
             // Display an error message or handle the case where the task doesn't exist
