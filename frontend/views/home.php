@@ -22,11 +22,11 @@ $user = getUser();
     <?php if ($this->user->user_role === "parent") : ?>
         <div class="parent-view">
             <h4>
-                <?php 
+                <?php
                 $dinosaur_fetcher = date('d.m.y');
                 $currentDayOfWeek = date('l');
                 echo "Today is " . $currentDayOfWeek . " " . $dinosaur_fetcher;
-                ?> 
+                ?>
             </h4>
             <h1><?= $this->user->username ?>'s view </h1>
 
@@ -85,35 +85,33 @@ $user = getUser();
                                         <?php endif; ?>
                                     <?php endforeach; ?>
                                 </div>
-
-
                             </div>
 
                             <?php foreach ($logs as $log) : ?>
                                 <div class="logged-tasks">
-                                    <h4>Logged: INSERT API FOR TIME</h4><br>
+                                    <h3>Logged:</h3>
                                     <div>
-                                    <?php if (!empty($log->emotion)) : ?>
-                                        <h4> Emotion: </h4><?= $log->emotion ?><br>
-                                    <?php endif; ?>
-                                    <?php if (!empty($log->social)) : ?>
-                                        <h4> Social: </h4><?= $log->social ?><br>
-                                    <?php endif; ?>
-                                    <?php if (!empty($log->hobby)) : ?>
-                                        <h4> Hobby: </h4><?= $log->hobby ?><br>
-                                    <?php endif; ?>
-                                    <?php if (!empty($log->school)) : ?>
-                                        <h4> School: </h4><?= $log->school ?><br>
-                                    <?php endif; ?>
-                                    <?php if (!empty($log->chore)) : ?>
-                                        <h4> Chore: </h4><?= $log->chore ?><br>
-                                    <?php endif; ?>
-                                    <?php if (!empty($log->food)) : ?>
-                                        <h4> Food: </h4><?= $log->food ?><br>
-                                    <?php endif; ?>
+                                        <?php if (!empty($log->emotion)) : ?>
+                                            <h4> Emotion: </h4><?= $log->emotion ?><br>
+                                        <?php endif; ?>
+                                        <?php if (!empty($log->social)) : ?>
+                                            <h4> Social: </h4><?= $log->social ?><br>
+                                        <?php endif; ?>
+                                        <?php if (!empty($log->hobby)) : ?>
+                                            <h4> Hobby: </h4><?= $log->hobby ?><br>
+                                        <?php endif; ?>
+                                        <?php if (!empty($log->school)) : ?>
+                                            <h4> School: </h4><?= $log->school ?><br>
+                                        <?php endif; ?>
+                                        <?php if (!empty($log->chore)) : ?>
+                                            <h4> Chore: </h4><?= $log->chore ?><br>
+                                        <?php endif; ?>
+                                        <?php if (!empty($log->food)) : ?>
+                                            <h4> Food: </h4><?= $log->food ?><br>
+                                        <?php endif; ?>
+                                    </div>
+                                <?php endforeach; ?>
                                 </div>
-                            <?php endforeach; ?>
-                        </div>
                     </li>
                 <?php endforeach; ?>
             <?php else : ?>
@@ -121,104 +119,108 @@ $user = getUser();
             <?php endif; ?>
         </div>
     <?php endif; ?>
-</div>
+    </div>
 
 
 
     <?php if ($this->user->user_role === "child") : ?>
         <div class="child-view">
-        <h4>
-            <?php 
-            $currentDateTime = date('d.m.y');
-            $currentDayOfWeek = date('l');
-            echo "Today is " . $currentDayOfWeek . " " . $currentDateTime;
-            ?> 
-        </h4>
-        <h1><?= $this->user->username ?>'s view </h1>
-            <div class="to-do-list-child">
+            <h4>
                 <?php
-                $TasksService = new TasksService();
-                $tasks = $TasksService->getTasksForChild($this->user->user_id);
+                $currentDateTime = date('d.m.y');
+                $currentDayOfWeek = date('l');
+                echo "Today is " . $currentDayOfWeek . " " . $currentDateTime;
                 ?>
-                <div>
-                    <h3>To-do</h3>
-                    <?php foreach ($tasks as $task) : ?>
-                        <?php if ($task->status == "0") : ?>
-                            <div class="to-do-child">
-                                <?php if (!empty($task->school)) : ?>
-                                    <h4>School: </h4><?= $task->school ?><br>
-                                <?php endif; ?>
-                                <?php if (!empty($task->chore)) : ?>
-                                    <h4>Chore: </h4><?= $task->chore ?><br>
-                                <?php endif; ?>
-                                <?php if (!empty($task->food)) : ?>
-                                    <h4>Food: </h4><?= $task->food ?><br>
-                                <?php endif; ?>
-                            </div>
-                            <button><a href="<?= $this->home ?>/parent-tasks/<?= $task->task_id ?>/complete" class="btn">Complete</a></button>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-                </div>
-
-
-                <div class="done">
-                    <h3>Done</h3>
-                    <?php foreach ($tasks as $task) : ?>
-                        <?php if ($task->status == "1") : ?>
-                            <div>
-                                <?php if (!empty($task->school)) : ?>
-                                    <h4>School: </h4><?= $task->school ?><br>
-                                <?php endif; ?>
-                                <?php if (!empty($task->chore)) : ?>
-                                    <h4>Chore: </h4><?= $task->chore ?><br>
-                                <?php endif; ?>
-                                <?php if (!empty($task->food)) : ?>
-                                    <h4>Food: </h4><?= $task->food ?><br>
-                                <?php endif; ?>
-                            </div>
-                        <?php endif; ?>
-                    <?php endforeach; ?>
-                </div>
-
-                </div>
-
+            </h4>
             <div class="logs">
-                <h3>Today's logs</h3>
-                <?php
-                $LogsService = new LogsService();
-                $logs = $LogsService->getLogsForChild($this->user->user_id);
-                ?>
-                <?php foreach ($logs as $log) : ?>
-                    <div class="to-do-list-child">
-                        <?php if (!empty($log->emotion)) : ?>
-                            <h4>Emotion: </h4><?= $log->emotion ?><br>
-                        <?php endif; ?>
-                        <?php if (!empty($log->social)) : ?>
-                            <h4>Social: </h4><?= $log->social ?><br>
-                        <?php endif; ?>
-                        <?php if (!empty($log->hobby)) : ?>
-                            <h4>Hobby: </h4><?= $log->hobby ?><br>
-                        <?php endif; ?>
-                        <?php if (!empty($log->school)) : ?>
-                            <h4>School: </h4><?= $log->school ?><br>
-                        <?php endif; ?>
-                        <?php if (!empty($log->chore)) : ?>
-                            <h4>Chore: </h4><?= $log->chore ?><br>
-                        <?php endif; ?>
-                        <?php if (!empty($log->food)) : ?>
-                            <h4>Food: </h4><?= $log->food ?><br>
-                        <?php endif; ?>
-                        <a href="<?= $this->home ?>/child-logs/<?= $log->log_id ?>/edit" class="navigation">Edit</a>
+                <h1><?= $this->user->username ?>'s view </h1>
+                <div class="to-do-list-child">
+                    <?php
+                    $TasksService = new TasksService();
+                    $tasks = $TasksService->getTasksForChild($this->user->user_id);
+                    ?>
 
-                <?php endforeach; ?>
-                <button><a href="<?= $this->home ?>/child-logs/<?= $this->user->user_id ?>/new-log" class="btn">New log</a></button>
+                    <div class="to-do-child">
+                        <h3>To-do</h3>
+
+                        <?php foreach ($tasks as $task) : ?>
+                            <?php if ($task->status == "0") : ?>
+                                <div>
+                                    <?php if (!empty($task->school)) : ?>
+                                        <h4>School: </h4><?= $task->school ?><br>
+                                    <?php endif; ?>
+                                    <?php if (!empty($task->chore)) : ?>
+                                        <h4>Chore: </h4><?= $task->chore ?><br>
+                                    <?php endif; ?>
+                                    <?php if (!empty($task->food)) : ?>
+                                        <h4>Food: </h4><?= $task->food ?><br>
+                                    <?php endif; ?>
+                                </div>
+                                <button><a href="<?= $this->home ?>/parent-tasks/<?= $task->task_id ?>/complete" class="btn">Complete</a></button>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+
+                    </div>
+
+                    <div class="done-child">
+                        <h3>Done</h3>
+                        <?php foreach ($tasks as $task) : ?>
+                            <?php if ($task->status == "1") : ?>
+                                <div>
+                                    <?php if (!empty($task->school)) : ?>
+                                        <h4>School: </h4><?= $task->school ?><br>
+                                    <?php endif; ?>
+                                    <?php if (!empty($task->chore)) : ?>
+                                        <h4>Chore: </h4><?= $task->chore ?><br>
+                                    <?php endif; ?>
+                                    <?php if (!empty($task->food)) : ?>
+                                        <h4>Food: </h4><?= $task->food ?><br>
+                                    <?php endif; ?>
+                                </div>
+                            <?php endif; ?>
+                        <?php endforeach; ?>
+                    </div>
+                </div>
+
+                <div class="logged-tasks-child">
+                    <h3>Today's logs</h3>
+                    <?php
+                    $LogsService = new LogsService();
+                    $logs = $LogsService->getLogsForChild($this->user->user_id);
+                    ?>
+                    <div>
+                        <?php foreach ($logs as $log) : ?>
+                            <?php if (!empty($log->emotion)) : ?>
+                                <h4>Emotion: </h4><?= $log->emotion ?><br>
+                            <?php endif; ?>
+                            <?php if (!empty($log->social)) : ?>
+                                <h4>Social: </h4><?= $log->social ?><br>
+                            <?php endif; ?>
+                            <?php if (!empty($log->hobby)) : ?>
+                                <h4>Hobby: </h4><?= $log->hobby ?><br>
+                            <?php endif; ?>
+                            <?php if (!empty($log->school)) : ?>
+                                <h4>School: </h4><?= $log->school ?><br>
+                            <?php endif; ?>
+                            <?php if (!empty($log->chore)) : ?>
+                                <h4>Chore: </h4><?= $log->chore ?><br>
+                            <?php endif; ?>
+                            <?php if (!empty($log->food)) : ?>
+                                <h4>Food: </h4><?= $log->food ?><br>
+                            <?php endif; ?>
+                            <a href="<?= $this->home ?>/child-logs/<?= $log->log_id ?>/edit" class="navigation">Edit</a> <br>
+                    </div>
+                    <div>
+                    <?php endforeach; ?></div>
+                    <button><a href="<?= $this->home ?>/child-logs/<?= $this->user->user_id ?>/new-log" class="btn">New log</a></button>
+
+                </div>
             </div>
-
+        <?php endif; ?>
         </div>
-    <?php endif; ?>
 
 
-<?php else : ?>
+    <?php else : ?>
 
         <div class="home-page">
             <div class="home-page-text">
@@ -246,7 +248,7 @@ $user = getUser();
             </div>
 
         </div>
-    </div>
+        </div>
 
 
-<?php endif; ?>
+    <?php endif; ?>

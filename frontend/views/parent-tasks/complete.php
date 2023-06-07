@@ -30,18 +30,20 @@ $task = $TasksService->getTaskById($task_id);
                 </label>
                 <div class="div">
 
-                <input type="checkbox" name="status" value="1" <?= $task->status == 1 ? 'checked' : '' ?>> <br>
+                <input type="checkbox" name="status" value="1" <?= $task->status == 1 ? 'checked' : '' ?>>
 
                 <?php if (!empty($task->school)) : ?>
                     <label>School:</label>
                     <div class="checkbox"><?= is_array($task->school) ? implode(', ', $task->school) : $task->school ?></div>
                 <?php endif; ?>
 
+                <input type="checkbox" name="status" value="1" <?= $task->status == 1 ? 'checked' : '' ?>>
                 <?php if (!empty($task->chore)) : ?>
                     <label>Chore:</label>
                     <div class="checkbox"><?= is_array($task->chore) ? implode(', ', $task->chore) : $task->chore ?></div>
                 <?php endif; ?>
 
+                                <input type="checkbox" name="status" value="1" <?= $task->status == 1 ? 'checked' : '' ?>>
                 <?php if (!empty($task->food)) : ?>
                     <label>Food:</label>
                     <div class="checkbox"><?= is_array($task->food) ? implode(', ', $task->food) : $task->food ?></div>

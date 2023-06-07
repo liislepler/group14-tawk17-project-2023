@@ -5,7 +5,7 @@ require_once __DIR__ . "/../../../business-logic/UsersService.php";
 Template::header("New Log");
 ?>
 
-<div class="new-task">
+<div class="new-task-child">
 <h1>Add a new log for today</h1>
 
 

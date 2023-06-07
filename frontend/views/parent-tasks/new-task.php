@@ -10,7 +10,7 @@ Template::header("New Task");
 
 $url = $_SERVER['REQUEST_URI'];
 $parts = explode('/', $url);
-$child_id = $parts[4];
+$child_id = $parts[3];
 
 $usersService = new UsersService();
 $user = $usersService->getUserById($child_id);
@@ -19,6 +19,8 @@ $user = $usersService->getUserById($child_id);
 
 <div class="new-task">
     <h1>New Task for <?= $user->username ?></h1>
+
+    <h3>Status: <input type="text" name="status" placeholder="To-do" readonly style="border: none;"> </h3><br>
 
     <div class="flex-container">
         <form action="<?= $this->home ?>/parent-tasks/<?= $user->user_id ?>/new-task" method="post">
@@ -67,11 +69,9 @@ $user = $usersService->getUserById($child_id);
         </div>
     </div>
 
-    <h3>Status: <input type="number" name="status" placeholder="To-do" readonly style="border: none;"> </h3><br>
-
-    <input type="hidden" name="child" value="<?= $user->user_id ?>"> <br>
-    <input type="hidden" name="parent" value="<?= $this->user->user_id ?>"> <br>
-
+    <input type="hidden" name="child" value="<?= $user->user_id ?>">
+    <input type="hidden" name="parent" value="<?= $this->user->user_id ?>">
+    <br>
     <input type="submit" value="Save" class="btn">
     </form>
 

@@ -17,7 +17,7 @@ Template::header("Login", $this->model["error"]);
         <button type="submit" class="btn">Log in</button>
     </form>
 
-    <h3>Don't have an account?</h3>
+    <h3>Don't have an account?</h3> <br>
 
         <a href="<?= $this->home ?>/auth/create-account" class="btn">Create account</a>
         <br>

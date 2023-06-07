@@ -76,13 +76,16 @@ $task = $TasksService->getTaskById($task_id);
         <form action="<?= $this->home ?>/parent-tasks/<?= $task_id ?>/delete" method="post" onsubmit="return confirmDelete()">
             <input type="submit" value="Delete" class="btn delete-btn">
         </form>
-        </div>
+
+
     <?php
     } else {
         // Display an error message or handle the case where the task doesn't exist
         echo 'Tasks not found.';
     }
     ?>
+        </div>
+
 
     <script>
         function confirmDelete() {
