@@ -89,7 +89,6 @@ $user = getUser();
 
                             <h3>Logged</h3>
                             <?php foreach ($logs as $log) : ?>
-                                <div class="logged-tasks">
                                     <div>
                                         <?php if (!empty($log->emotion)) : ?>
                                             <h4> Emotion: </h4><?= $log->emotion ?><br>
@@ -110,8 +109,8 @@ $user = getUser();
                                             <h4> Food: </h4><?= $log->food ?><br>
                                         <?php endif; ?>
                                     </div>
-                                <?php endforeach; ?>
-                            </div>
+                            <?php endforeach; ?>
+                        </div>
                     </li>
                 <?php endforeach; ?>
             <?php else : ?>
@@ -133,8 +132,6 @@ $user = getUser();
                 ?>
             </h4>
             <div class="child-logs">
-                <h1><?= $this->user->username ?>'s view </h1>
-            <div class="logs">
                 <h1><?= $this->user->username ?>'s view 🦖</h1>
                 <div class="to-do-list-child">
                     <?php
