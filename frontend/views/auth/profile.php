@@ -12,7 +12,7 @@ Template::header("Profile");
 
 <div class="profile">
 
-    <h1>Logged in as: <?= $this->user->username ?></h1>
+    <h1>Logged in as: <?= $this->user->username ?> 🦖 </h1>
 
     <div class="item-grid">
 

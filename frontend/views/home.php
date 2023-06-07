@@ -28,7 +28,7 @@ $user = getUser();
                 echo "Today is " . $currentDayOfWeek . " " . $dinosaur_fetcher;
                 ?>
             </h4>
-            <h1><?= $this->user->username ?>'s view </h1>
+            <h1><?= $this->user->username ?>'s view 🦖</h1>
 
             <?php if (count($children) > 0) : ?>
                 <?php foreach ($children as $child) : ?>
@@ -133,7 +133,7 @@ $user = getUser();
                 ?>
             </h4>
             <div class="logs">
-                <h1><?= $this->user->username ?>'s view </h1>
+                <h1><?= $this->user->username ?>'s view 🦖</h1>
                 <div class="to-do-list-child">
                     <?php
                     $TasksService = new TasksService();
@@ -213,18 +213,16 @@ $user = getUser();
                     <div>
                     <?php endforeach; ?></div>
                     <button><a href="<?= $this->home ?>/child-logs/<?= $this->user->user_id ?>/new-log" class="btn">New log</a></button>
-
                 </div>
             </div>
         <?php endif; ?>
         </div>
 
-
     <?php else : ?>
 
         <div class="home-page">
             <div class="home-page-text">
-                <h1>Welcome to Trackersaurus</h1>
+                <h1>Welcome to Trackersaurus 🦖</h1>
 
                 <h2>
                     This is Trackersaurus!
