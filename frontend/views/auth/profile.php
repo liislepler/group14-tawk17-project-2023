@@ -22,17 +22,12 @@ Template::header("Profile");
 
         <h5><?php echo $this->model['description'] ?? 'No dinosaur description found.'; ?></h5>
 
-        <button onclick="refreshPage()">Show me a new dino!</button>
+        <button class="dino-button" onclick="refreshPage()">Show me a new dino!</button>
     </div>
 
     <div class="account-settings">
-        <div class="button">
-            <a href="<?= $this->home ?>/auth/profile/<?= $user_id ?>/edit" class="btn"> Account settings</a>
-        </div>
 
         <?php if ($this->user->user_role === "parent") : ?>
-            <h4>Parent account</h4>
-
             <div class="item-grid">
                 <h3>Children:</h3>
                 <div class="children-list">
@@ -56,18 +51,17 @@ Template::header("Profile");
                 <p>No children found for the parent</p>
             <?php endif; ?>
 
-            <div class="button">
-                <a href="<?= $this->home ?>/auth/add-children" class="btn">Add your children</a>
-            </div>
-
-            <div class="button">
-                <a href="<?= $this->home ?>/auth/profile/<?= $user_id ?>/edit" class="btn"> Account settings</a>
-            </div>
+          
+            <button><a href="<?= $this->home ?>/auth/add-children" class="btn">Add your children</a></button>
 
         <?php endif; ?>
 
+        <div class="settings">
+            <button><a href="<?= $this->home ?>/auth/profile/<?= $user_id ?>/edit" class="btn"> Account settings</a>
+        </div>
+
         <form action="<?= $this->home ?>/auth/log-out" method="post">
-            <input type="submit" value="Log out" class="btn">
+            <input type="submit" value="Log out" class="logout">
         </form>
 
 

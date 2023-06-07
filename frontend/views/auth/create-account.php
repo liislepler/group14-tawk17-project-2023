@@ -8,7 +8,7 @@ Template::header("Create Account", $this->model["error"]);
 
 <h1>Create Account</h1>
 
-<form autocomplete="off" action="<?= $this->home ?>/auth/create-account" method="post">
+<form autocomplete="off" action="<?= $this->home ?>/auth/create-account" method="post"  onsubmit="return checkField()" id="input" >
     <h4>Username</h4>
         <input type="text" name="username" placeholder="Username"> <br>
 
@@ -23,12 +23,23 @@ Template::header("Create Account", $this->model["error"]);
 
     <p>If you're a child, let your parent sign-up before</p>
 
-    <button type="submit" class="btn">Sign Up</button>
+    <button type="submit" class="dino-button">Sign Up</button>
 </form>
 
 
     <h3>Do you have an account?</h3><br>
-    <a href="<?= $this->home ?>/auth/log-in" class="btn">Log in</a>
+    <button><a href="<?= $this->home ?>/auth/log-in" class="btn">Log in</a></button>
     
 </div>
 
+<script>
+    function checkField() {
+        var input = document.getElementById('input');
+
+        if (input.username.value === '' || input.password.value === '' || input.confirm_password.value === '') {
+            alert('Field is empty!');
+            return false; 
+        }
+        return true; 
+    }
+</script>

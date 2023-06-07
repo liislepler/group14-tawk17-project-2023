@@ -132,25 +132,17 @@ a {
     font-family: 'Coiny';
     font-size: 20px;
     text-align: center;
-    color: #7da520;
     text-decoration: none;
     padding: 10px;
+}
+
+a.navigation {
+    color: #7da520;
 }
 
 a.navigation:hover {
     background-color: white;
     color: #698822;
-}
-
-a.btn {
-    background-color: #ACCC5F;
-    color: rgb(32, 32, 32);
-    padding: 20px;
-    margin: 20px;
-    border-radius: 15px;
-    border: none;
-    font-family: 'Coiny';
-    font-size: 20px;
 }
 
 .center {
@@ -160,22 +152,34 @@ a.btn {
 }
 
 button {
+    width: 19vw;
+    text-align: center;
+    border-radius: 15px;
     background-color: #ACCC5F;
-    color: rgb(32, 32, 32);
-    padding: 15px;
-    margin: 10px;
-    border-radius: 10px;
+    color: #000000;
     border: none;
+    margin: 10px;
     font-family: 'Coiny';
     font-size: 20px;
 }
 
-a:hover {
-    background-color: #7da520;
+button a {
+    display: inline-block;
+    width: 90%;
+    height: 100%;
+    color: #698822;
+    text-decoration: none;
 }
 
-button:hover {
+button:hover,
+button a:hover {
     background-color: #7da520;
+    color: rgb(32, 32, 32);
+    cursor: pointer;
+}
+
+.complete {
+    margin-top: 0;
 }
 
 input.btn.delete-btn {
@@ -201,7 +205,9 @@ input {
     border-radius: 15px;
 }
 
-input:-webkit-autofill, textarea:-webkit-autofill, select:-webkit-autofill { 
+input:-webkit-autofill,
+textarea:-webkit-autofill,
+select:-webkit-autofill {
     background-color: #fff !important;
     -webkit-box-shadow: 0 0 0px 1000px white inset;
 }
@@ -211,6 +217,11 @@ input.btn {
     border: none;
     font-family: 'Coiny';
     font-size: 20px;
+}
+
+input.btn:hover {
+    background-color: #698822;
+    cursor: pointer;
 }
 
 input.btn.delete-btn {
@@ -231,6 +242,11 @@ input.btn.delete-btn {
 }
 
 input:checked {
+    height: 25px;
+    width: 25px;
+}
+
+.completed {
     height: 25px;
     width: 25px;
 }
@@ -258,13 +274,15 @@ div.item-grid {
 }
 
 div.to-do-list {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     margin-bottom: 15px;
     background-color: #ffe6a1;
 }
 
 div.to-do-list-child {
-    display: flex;
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
     margin-bottom: 15px;
     background-color: #9cafc9;
 }
@@ -273,7 +291,7 @@ div.logged-tasks {
     background-color: #ffe6a1;
 }
 
-div.logged-tasks-child {
+div.logs-child {
     background-color: #9cafc9;
 }
 
@@ -293,9 +311,12 @@ div.done-child {
     background-color: #9cafc9;
 }
 
+div.child-logs {
+    background-color: aliceblue;
+}
+
 div.logs {
-    background-color: white;
-    display: flexbox;
+    background-color: #ffe6a1;
 }
 
 div.button {
@@ -305,23 +326,21 @@ div.button {
 }
 
 div.flex-container {
-    justify-content: center;
     padding: 15px;
     background-color: #cc5f5f;
-    align-content: start;    
     grid-auto-flow: column;
     width: 300px;
-    align-items: center;
+    margin: 0 auto;
+    margin-bottom: 20px;
 }
 
-#flex-container {
-    height: 200px;
-    width: 240px;
-    align-items: center;
-    background-color: #8c8c8c;
-    align-content: center;
-    margin: 10px;
-    display: flex;
+div.flex-container-log {
+    padding: 15px;
+    background-color: #84a1c8;
+    grid-auto-flow: column;
+    width: 300px;
+    margin: 0 auto;
+    margin-bottom: 20px;
 }
 
 div.checkbox {
@@ -348,7 +367,6 @@ ul {
 
 .center {
     align-content: center;
-
 }
 
 .logout {
@@ -358,6 +376,36 @@ ul {
     font-size: 20px;
 }
 
+.logout:hover {
+    color: #cc5f5f;
+    cursor: pointer;
+}
+
 .children-list {
     background-color: white;
+}
+
+div.confirm-complete {
+    background-color: #cc5f5f;
+    margin-bottom: 0;
+    padding-bottom: 0;
+}
+
+div.confirm-complete h3 {
+    margin: 0;
+    padding: 0;
+}
+
+.edit-container div {
+    margin: 0;
+}
+
+.dino-button {
+    color: #698822;
+    padding: 10px;
+}
+
+.settings {
+    margin-top: 0;
+    padding-top: 0;
 }
