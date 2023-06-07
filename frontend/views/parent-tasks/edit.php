@@ -5,7 +5,7 @@ Template::header("Edit");
 
 $url = $_SERVER['REQUEST_URI'];
 $parts = explode('/', $url);
-$task_id = $parts[3];
+$task_id = $parts[4];
 
 $TasksService = new TasksService();
 $task = $TasksService->getTaskById($task_id);
@@ -13,7 +13,6 @@ $task = $TasksService->getTaskById($task_id);
 
 <div class="new-task">
     <h1>Edit task</h1>
-    <div class="logs">
     <?php
     if ($task) {
         $schoolOptions = ['P.E.', 'Math', 'Language', 'Homework', 'Presentation', 'Groupwork'];
@@ -25,58 +24,51 @@ $task = $TasksService->getTaskById($task_id);
         $task->food = explode(',', $task->food);
     ?>
 
-        <form action="<?= $this->home ?>/parent-tasks/<?= $task_id ?>/edit" method="post" class="center">
-
-            <div class="flex-container">
-
-                <h3>School:</h3>
-                <div class="div">
-                    <?php
-                    foreach ($schoolOptions as $option) {
-                        $isChecked = in_array($option, $task->school) ? 'checked' : '';
-                        echo '<div class="checkbox"><input type="checkbox" name="school[]" value="' . $option . '" ' . $isChecked . '> ' . $option . '</div>';
-                    }
-                    ?>
-                </div>
+    <form action="<?= $this->home ?>/parent-tasks/<?= $task_id ?>/edit" method="post" class="center">
+        <div class="flex-container">
+            <h3>School:</h3>
+            <div class="div">
+                <?php
+                foreach ($schoolOptions as $option) {
+                    $isChecked = in_array($option, $task->school) ? 'checked' : '';
+                    echo '<div class="checkbox"><input type="checkbox" name="school[]" value="' . $option . '" ' . $isChecked . '> ' . $option . '</div>';
+                }
+                ?>
             </div>
+        </div>
 
-
-
-            <div class="flex-container">
-                <h3>Chore:</h3>
-                <div class="div">
-                    <?php
-                    foreach ($choreOptions as $option) {
-                        $isChecked = in_array($option, $task->chore) ? 'checked' : '';
-                        echo '<div class="checkbox"><input type="checkbox" name="chore[]" value="' . $option . '" ' . $isChecked . '> ' . $option . '</div>';
-                    }
-                    ?>
-                </div>
+        <div class="flex-container">
+            <h3>Chore:</h3>
+            <div class="div">
+                <?php
+                foreach ($choreOptions as $option) {
+                    $isChecked = in_array($option, $task->chore) ? 'checked' : '';
+                    echo '<div class="checkbox"><input type="checkbox" name="chore[]" value="' . $option . '" ' . $isChecked . '> ' . $option . '</div>';
+                }
+                ?>
             </div>
+        </div>
 
-
-            <div class="flex-container">
-
-                <h3>Food:</h3>
-                <div class="div">
-                    <?php
-                    foreach ($foodOptions as $option) {
-                        $isChecked = in_array($option, $task->food) ? 'checked' : '';
-                        echo '<div class="checkbox"><input type="checkbox" name="food[]" value="' . $option . '" ' . $isChecked . '> ' . $option . '</div>';
-                    }
-                    ?>
-                </div>
+        <div class="flex-container">
+            <h3>Food:</h3>
+            <div class="div">
+                <?php
+                foreach ($foodOptions as $option) {
+                    $isChecked = in_array($option, $task->food) ? 'checked' : '';
+                    echo '<div class="checkbox"><input type="checkbox" name="food[]" value="' . $option . '" ' . $isChecked . '> ' . $option . '</div>';
+                }
+                ?>
             </div>
+        </div>
 
-            <input type="hidden" name="task_id" value="<?= $task->task_id ?>"> <br>
+        <input type="hidden" name="task_id" value="<?= $task->task_id ?>"> <br>
 
-            <input type="submit" value="Save" class="btn">
-        </form>
+        <input type="submit" value="Save" class="btn">
+    </form>
 
-        <form action="<?= $this->home ?>/parent-tasks/<?= $task_id ?>/delete" method="post" onsubmit="return confirmDelete()">
-            <input type="submit" value="Delete" class="btn delete-btn">
-        </form>
-
+    <form action="<?= $this->home ?>/parent-tasks/<?= $task_id ?>/delete" method="post" onsubmit="return confirmDelete()">
+        <input type="submit" value="Delete" class="btn delete-btn">
+    </form>
 
     <?php
     } else {
@@ -84,8 +76,6 @@ $task = $TasksService->getTaskById($task_id);
         echo 'Tasks not found.';
     }
     ?>
-        </div>
-
 
     <script>
         function confirmDelete() {

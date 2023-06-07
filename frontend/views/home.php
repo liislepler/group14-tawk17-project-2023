@@ -87,9 +87,9 @@ $user = getUser();
                                 </div>
                             </div>
 
+                            <h3>Logged</h3>
                             <?php foreach ($logs as $log) : ?>
                                 <div class="logged-tasks">
-                                    <h3>Logged:</h3>
                                     <div>
                                         <?php if (!empty($log->emotion)) : ?>
                                             <h4> Emotion: </h4><?= $log->emotion ?><br>
@@ -111,7 +111,7 @@ $user = getUser();
                                         <?php endif; ?>
                                     </div>
                                 <?php endforeach; ?>
-                                </div>
+                            </div>
                     </li>
                 <?php endforeach; ?>
             <?php else : ?>
@@ -132,7 +132,7 @@ $user = getUser();
                 echo "Today is " . $currentDayOfWeek . " " . $currentDateTime;
                 ?>
             </h4>
-            <div class="logs">
+            <div class="child-logs">
                 <h1><?= $this->user->username ?>'s view </h1>
                 <div class="to-do-list-child">
                     <?php
@@ -156,7 +156,7 @@ $user = getUser();
                                         <h4>Food: </h4><?= $task->food ?><br>
                                     <?php endif; ?>
                                 </div>
-                                <button><a href="<?= $this->home ?>/parent-tasks/<?= $task->task_id ?>/complete" class="btn">Complete</a></button>
+                                <button class="complete"><a href="<?= $this->home ?>/parent-tasks/<?= $task->task_id ?>/complete" class="btn">Complete</a></button>
                             <?php endif; ?>
                         <?php endforeach; ?>
 
@@ -182,14 +182,14 @@ $user = getUser();
                     </div>
                 </div>
 
-                <div class="logged-tasks-child">
+                <div class="logs-child">
                     <h3>Today's logs</h3>
                     <?php
                     $LogsService = new LogsService();
                     $logs = $LogsService->getLogsForChild($this->user->user_id);
                     ?>
-                    <div>
                         <?php foreach ($logs as $log) : ?>
+                        <div>
                             <?php if (!empty($log->emotion)) : ?>
                                 <h4>Emotion: </h4><?= $log->emotion ?><br>
                             <?php endif; ?>
@@ -209,11 +209,9 @@ $user = getUser();
                                 <h4>Food: </h4><?= $log->food ?><br>
                             <?php endif; ?>
                             <a href="<?= $this->home ?>/child-logs/<?= $log->log_id ?>/edit" class="navigation">Edit</a> <br>
-                    </div>
-                    <div>
-                    <?php endforeach; ?></div>
+                        </div>
+                        <?php endforeach; ?>
                     <button><a href="<?= $this->home ?>/child-logs/<?= $this->user->user_id ?>/new-log" class="btn">New log</a></button>
-
                 </div>
             </div>
         <?php endif; ?>
@@ -242,8 +240,8 @@ $user = getUser();
                 </h2>
 
                 <br>
-                <a href="<?= $this->home ?>/auth/create-account" class="btn">Create Account</a>
-                <a href="<?= $this->home ?>/auth/log-in" class="btn">Log in</a>
+                <button><a href="<?= $this->home ?>/auth/create-account" class="btn">Create Account</a></button>
+                <button><a href="<?= $this->home ?>/auth/log-in" class="btn">Log in</a></button>
 
             </div>
 
