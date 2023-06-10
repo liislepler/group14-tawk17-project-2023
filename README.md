@@ -382,17 +382,6 @@ By extending the `ControllerBase` class, other controller classes can inherit th
 ## Frontend Router
 It handles routing API requests and loading the appropriate controllers based on the requested resource.
 
-### File Structure
-
-- `index.php`: Entry point of the application. Handles the initial request.
-- `functions.php`: Contains common utility functions used throughout the application.
-- `controllers/`: Directory containing controller classes for different resources.
-  - `AuthController.php`: Controller class for handling authentication-related requests.
-  - `HomeController.php`: Controller class for handling home page requests.
-  - `AssetsController.php`: Controller class for serving static assets.
-  - `TasksController.php`: Controller class for handling tasks-related requests.
-  - `LogsController.php`: Controller class for handling logs-related requests.
-
 ### FrontendRouter Class
 
 The `FrontendRouter` class is responsible for routing API requests to the appropriate controller based on the requested resource. It loads the necessary controller classes and handles the request.
