@@ -21,7 +21,7 @@ Created by Liis Lepler and Elin Tri 2023
 
 ## Trackersaurus
 
-This project is a web application that allows paresnts to manage activities for children and children to report their activities to the parents.
+This project is a web application that allows parents to manage activities for children and children to report their activities to the parents.
 
 ## API Layer
 
